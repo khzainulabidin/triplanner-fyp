@@ -1,0 +1,22 @@
+:global :root{
+    --primary-color: #3236A7;
+    --secondary-color: #04B6A9;
+    --primary-dark-color: #22198C;
+    --primary-light-color: #6C46BD;
+    --text-primary: #434141;
+    --text-secondary: #F0F2F5;
+    --text-light: #FBFBFB;
+    --text-dark: #1A1A1A;
+    --shadow_color: #AFB1B3;
+    --white: #FFFFFF;
+    --error: #DD5347;
+}
+
+:global .colored-text{
+    color: var(--primary-light-color);
+    text-transform: capitalize;
+}
+
+.app{
+    background: var(--white);
+}

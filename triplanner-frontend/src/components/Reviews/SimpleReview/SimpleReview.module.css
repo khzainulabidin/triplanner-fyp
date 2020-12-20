@@ -1,0 +1,9 @@
+.simpleReview{
+    display: flex;
+    align-items: center;
+    margin: 4% 0;
+}
+
+.simpleReview p{
+    margin-left: 3%;
+}

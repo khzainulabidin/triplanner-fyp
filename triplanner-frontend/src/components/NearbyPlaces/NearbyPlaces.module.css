@@ -1,0 +1,50 @@
+.nearbyPlaces{
+    height: 100vh;
+    display: flex;
+}
+
+.nearbyPlaces_filterContainer{
+    width: 20%;
+    height: 100%;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+    padding: 2% 1%;
+    opacity: 0.9;
+    background: var(--text-dark);
+    color: var(--text-light);
+}
+
+.nearbyPlaces_filterContainer h3{
+    margin-bottom: 15%;
+}
+
+.nearbyPlaces_placesContainer{
+    width: 70%;
+    height: 100%;
+    padding: 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.nearbyPlaces_btnContainer{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nearbyPlaces_btnContainer button{
+    margin: 5% 0;
+}
+
+.nearbyPlaces_ratingFilter{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.nearbyPlaces_ratingSlider{
+    margin: 0 5%;
+}

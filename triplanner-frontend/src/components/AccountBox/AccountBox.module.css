@@ -1,0 +1,117 @@
+.accountBox{
+    background: var(--text-secondary);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountBox_box{
+    width: 95%;
+    min-height: 95vh;
+    background: var(--text-light);
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr;
+}
+
+.accountBox_logoBox{
+    height: 100%;
+    background: var(--text-light);
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    padding-top: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 20px 0 20px -20px rgba(0, 0, 0, 1);
+    z-index: 1;
+}
+
+.accountBox_contentBox{
+    height: 100%;
+    background: var(--text-dark);
+    border-radius: 0 10px 10px 0;
+    padding: 10%;
+    color: var(--text-light);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.accountBox_logo{
+    width: 50%;
+    object-fit: cover;
+}
+
+.accountBox_icon{
+    width: 65%;
+    object-fit: cover;
+}
+
+.accountBox_title{
+    margin-top: 3%;
+    font-weight: 500;
+}
+
+.accountBox_form{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.accountBox_form > form{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+.accountBox_login_options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.accountBox_suggestion{
+    color: var(--text-light);
+    margin-top: 10%;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.accountBox_suggestion > a{
+    margin-left: 5px;
+}
+
+.accountBox_link{
+    font-size: 0.7rem;
+}
+
+.accountBox_button_options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accountBox_chips{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10%;
+}
+
+.accountBox_info_icon{
+    margin-right: 3%;
+}
+
+.accountBox_fieldsContainer{
+    display: flex;
+    flex-flow: column;
+}
+
+:global .accountBox_error{
+    color: var(--error);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}

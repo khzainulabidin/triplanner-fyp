@@ -1,0 +1,17 @@
+.title_textContainer{
+    color: var(--text-primary);
+}
+
+.title_textContainer > h1{
+    font-weight: 300;
+    margin: 8px 0;
+}
+
+.title_textContainer > p{
+    opacity: 0.6;
+}
+
+.title_textContainer > button{
+    width: fit-content;
+    margin-top: 10%;
+}

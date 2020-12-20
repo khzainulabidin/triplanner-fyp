@@ -1,0 +1,17 @@
+.exploreLanding{
+    background: var(--text-secondary);
+    height: 90vh;
+    margin-top: 3px;
+}
+
+.exploreLanding_container{
+    height: 100%;
+    background: url("../../assets/explore_bg_icon.png") no-repeat bottom right;
+    padding: 5%;
+}
+
+.exploreLanding_landingTitle{
+    color: var(--text-primary);
+    text-transform: capitalize;
+    margin: 30px 0;
+}

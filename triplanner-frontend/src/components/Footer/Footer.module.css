@@ -1,0 +1,22 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    height: 100px;
+    padding: 0 5%;
+    opacity: 0.6;
+}
+
+.footer > div{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer a{
+    color: var(--text-primary);
+    text-decoration: none;
+    margin: 0 2%;
+}

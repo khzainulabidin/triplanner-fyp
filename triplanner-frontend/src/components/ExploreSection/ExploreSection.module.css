@@ -1,0 +1,13 @@
+.exploreSection{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.exploreSection_img{
+    width: 80%;
+    object-fit: cover;
+}

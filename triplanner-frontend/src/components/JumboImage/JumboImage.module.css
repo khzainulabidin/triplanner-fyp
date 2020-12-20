@@ -1,0 +1,42 @@
+.jumboImage{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.jumboImage button{
+    position: absolute;
+    z-index: 2;
+    height: 10%;
+    background: var(--text-dark);
+    width: 5%;
+    opacity: 0.6;
+    cursor: pointer;
+    border: 0 none;
+    outline: 0 none;
+    transition: 0.8s;
+    color: var(--white);
+}
+
+.jumboImage button:hover{
+    opacity: 1;
+}
+
+.jumboImage_prevBtn{
+    left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.jumboImage_nextBtn{
+    right: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.jumboImage img{
+    border-radius: 0 20px 20px 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+}

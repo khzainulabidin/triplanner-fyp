@@ -1,0 +1,32 @@
+.jumboForm_form{
+    display: flex;
+    align-items: center;
+}
+
+.jumboForm_input{
+    height: 60px;
+    width: 50%;
+    border: 0 none;
+    outline: 0 none;
+    font-size: 18px;
+    padding: 3px 30px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.jumboForm_btn{
+    border: 0 none;
+    outline: 0 none;
+    background: var(--primary-light-color);
+    border-radius: 0 10px 10px 20px;
+    height: 60px;
+    width: 60px;
+    position: relative;
+    right: 20px;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.jumboForm_btn > img{
+    height: 23px;
+}

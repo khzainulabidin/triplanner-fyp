@@ -1,0 +1,61 @@
+.navBar{
+    background: #FFFFFF;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBar_logo{
+    height: 30px;
+}
+
+.navBar div{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navBar a{
+    margin: 0 2%;
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navBar_searchBar{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.navBar_avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.navBar_confirmationNotice{
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--text-light);
+    background: var(--primary-light-color);
+    font-size: 0.8rem;
+}
+
+.navBar_confirmationNotice a{
+    color: var(--text-light);
+}
+
+.navBar_closeIcon{
+    font-size: 0.9rem;
+    cursor: pointer;
+}
