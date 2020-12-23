@@ -3,6 +3,7 @@ const asyncHandler = require('../middlewares/asyncHandler');
 const User = require('../models/User');
 const sendMail = require('../utils/sendEmail');
 const crypto = require('crypto');
+const encryption = require('../utils/encryption');
 
 // @desc    Register a user
 // @route   POST /api/v1/auth/register
@@ -10,8 +11,9 @@ const crypto = require('crypto');
 exports.register = asyncHandler(async (req, res, next) => {
     const {email, password, name, username, accountType} = req.body;
 
+    const encryptedEmail = encryption.encrypt(email);
     const confirmationToken = crypto.randomBytes(20).toString('hex');
-    const confirmationUrl = `${req.protocol}://${req.get('host')}/api/v1/verifyEmail/${email}/${confirmationToken}`;
+    const confirmationUrl = `${req.protocol}://${req.get('host')}/api/v1/verifyEmail/${encryptedEmail.iv}/${encryptedEmail.content}/${confirmationToken}`;
     const message = `Thanks for signing up! Clicking on the following link to confirm your email\n\n${confirmationUrl}`;
 
     try {

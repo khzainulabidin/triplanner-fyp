@@ -48,7 +48,7 @@ const PlaceDetail = () => {
             <PlaceJumbotron
                 title={place.name}
                 type={place.types[0].split('_').join(' ')}
-                address={place.vicinity}
+                address={place.formatted_address}
                 rating={place.rating}
                 reviewsCount={place.user_ratings_total}
                 reviews={reviews}

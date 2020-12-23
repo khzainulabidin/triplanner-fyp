@@ -11,12 +11,22 @@ import { useTheme } from '@material-ui/core/styles';
 import CheckBox from "../CheckBox/CheckBox";
 import Rating from "@material-ui/lab/Rating";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import axios from "axios";
+import {useSelector} from "react-redux";
+import {selectPlace} from "../../redux/slices/explore/nearbyPlaces";
+import {selectUser} from "../../redux/slices/user/user";
 
 const ReviewsBoxOptions = () => {
     const [mode, setMode] = useState('most_agrees');
     const [open, setOpen] = React.useState(false);
     const theme = useTheme();
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const place = useSelector(selectPlace);
+    const user = useSelector(selectUser);
+
+    const [recommended, setRecommended] = useState(true);
+    const [rating, setRating] = useState(5);
+    const [review, setReview] = useState('');
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -25,6 +35,24 @@ const ReviewsBoxOptions = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const handleSubmitReview = () => {
+        const api = axios.create({
+            baseURL: 'http://localhost:5000/api/v1/review'
+        });
+
+        api.post('/', {
+            place_id: place.place_id,
+            user_id: user._id,
+            review: review,
+            rating: rating,
+            recommended: recommended,
+        }).then(res => {
+            if (res.data.success){
+                handleClose();
+            }
+        })
+    }
 
     return(
         <div>
@@ -46,22 +74,29 @@ const ReviewsBoxOptions = () => {
             >
                 <DialogTitle id="responsive-dialog-title">{"Add a review"}</DialogTitle>
                 <DialogContent>
-                    <CheckBox name={'Do you recommend this places?'}/>
+                    <CheckBox name={'Do you recommend this places?'} checked={recommended} onChange={() => setRecommended(!recommended)}/>
                     <div style={{margin: '5%'}}>
                         <Rating
-                            value={5}
+                            value={rating}
+                            onChange={(e, value) => setRating(value)}
                             precision={0.5}
                             icon={<FavoriteIcon style={{ fontSize: '20px'}} />}
+                            name={'Rating'}
                         />
                     </div>
                     <form>
-                        <textarea rows={10} placeholder={'Write review'}
-                                  style={{margin: '5%', padding: '3%', borderRadius: '10px', width: '90%'}}>
+                        <textarea
+                            rows={10}
+                            placeholder={'Write review'}
+                            style={{margin: '5%', padding: '3%', borderRadius: '10px', width: '90%'}}
+                            value={review}
+                            onChange={e => setReview(e.target.value)}
+                        >
                         </textarea>
                     </form>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary" size={'small'}>Submit</Button>
+                    <Button onClick={handleSubmitReview} color="primary" size={'small'}>Submit</Button>
                 </DialogActions>
             </Dialog>
         </div>

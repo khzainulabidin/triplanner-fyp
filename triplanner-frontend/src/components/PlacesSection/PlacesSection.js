@@ -46,7 +46,7 @@ const PlacesSection = ({isLoggedIn, user}) => {
         });
 
         // eslint-disable-next-line
-    }, [user]);
+    }, []);
 
     return(
         <div className={styles.placesSection}>

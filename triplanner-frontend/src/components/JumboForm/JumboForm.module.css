@@ -30,3 +30,7 @@
 .jumboForm_btn > img{
     height: 23px;
 }
+
+.jumboForm{
+    display: flex;
+}

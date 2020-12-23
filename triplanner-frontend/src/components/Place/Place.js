@@ -8,18 +8,7 @@ import {setPlace} from "../../redux/slices/explore/nearbyPlaces";
 import {useHistory} from "react-router-dom";
 
 const Place = ({width, place}) => {
-    const [img, setImg] = useState(
-        place.photos ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${place.photos[0].photo_reference}&key=AIzaSyB832KgMGQLbv1FxFvsQVi3GQJfs__LQMc`
-            : 'http://localhost:5000/images/image_placeholder.jpg'
-    );
-    useEffect(() => {
-        if (place.photos){
-            setImg(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${place.photos[0].photo_reference}&key=AIzaSyB832KgMGQLbv1FxFvsQVi3GQJfs__LQMc`);
-        }
-        else {
-            setImg('http://localhost:5000/images/image_placeholder.jpg');
-        }
-    }, [place]);
+    const [img, setImg] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,12 +19,26 @@ const Place = ({width, place}) => {
         history.push('/placeDetail');
     };
 
+    useEffect(() => {
+        if (place.photos){
+            setImg(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${place.photos[0].photo_reference}&key=AIzaSyB832KgMGQLbv1FxFvsQVi3GQJfs__LQMc`);
+        }
+        else {
+            handleError();
+        }
+    }, [place]);
+
+    const handleError = () => {
+        setImg('http://localhost:5000/images/image_placeholder.jpg');
+    }
+
     return(
         <div className={styles.Place} style={{width: `${width}%`}} onClick={handleClick}>
             <Zoom>
                 <img
                     src={img}
                     alt={place.name}
+                    onError={handleError}
                 />
                 <div className={styles.Place_infoContainer}>
                     <h3>{place.name}</h3>

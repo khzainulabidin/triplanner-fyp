@@ -8,7 +8,7 @@ import SliderPrevButton from "../SliderPrevButton/SliderPrevButton";
 import SliderNextButton from "../SliderNextButton/SliderNextButton";
 import axios from "axios";
 import {setNearbyPlaces, selectFilters, selectNearByPlaces} from "../../redux/slices/explore/nearbyPlaces";
-import {GoogleMap, Marker} from '@react-google-maps/api';
+import {GoogleMap, Marker, TransitLayer, BicyclingLayer} from '@react-google-maps/api';
 import {useDispatch, useSelector} from "react-redux";
 
 const NearbyPlaces = ({location}) => {
@@ -21,22 +21,6 @@ const NearbyPlaces = ({location}) => {
     const filters = useSelector(selectFilters);
     const nearbyPlaces = useSelector(selectNearByPlaces);
     const dispatch = useDispatch();
-    const [map, setMap] = React.useState(null)
-
-    const containerStyle = {
-        width: '100%',
-        height: '100%'
-    };
-
-    const onLoad = React.useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds();
-        map.fitBounds(bounds);
-        setMap(map)
-    }, []);
-
-    const onUnmount = React.useCallback(function callback(map) {
-        setMap(null)
-    }, [])
 
     useEffect(() => {
         const api = axios.create({
@@ -75,8 +59,12 @@ const NearbyPlaces = ({location}) => {
                     </Select>
                 </FormControl>
 
-                <h3>Filters</h3>
-                <PlacesFilters/>
+                {mode === 'list' ? (
+                    <React.Fragment>
+                        <h3>Filters</h3>
+                        <PlacesFilters/>
+                    </React.Fragment>
+                ) : null}
             </div>
 
             {mode === 'list' ? (
@@ -112,14 +100,21 @@ const NearbyPlaces = ({location}) => {
                 </React.Fragment>
             ) : (
                 <GoogleMap
-                    mapContainerStyle={containerStyle}
+                    clickableIcons={true}
+                    tilt={45}
+                    mapContainerStyle={{
+                        width: '100%',
+                        height: '100%'
+                    }}
                     center={{
                         lat: location.lat,
                         lng: location.lng
                     }}
                     zoom={18}
                 >
-                    <Marker position={location}/>
+                    <Marker position={location} animation={'Bounce'} opacity={0.9}/>
+                    <TransitLayer/>
+                    <BicyclingLayer/>
                 </GoogleMap>
             )}
         </div>

@@ -16,7 +16,7 @@ const PlaceJumbotron = ({title, type, address, rating, reviewsCount, reviews, im
                         <h1 className={'Place_type'}>{title}</h1>
                         <p className={'Place_type'}>{type}</p>
                         <p>{address}</p>
-                        <Link to={'/'}>View directions</Link>
+                        {/*<Link to={'/'}>View directions</Link>*/}
 
                         {reviewsCount > 0 ? (
                             <div className={styles.placeJumbotron_ratingContainer}>
