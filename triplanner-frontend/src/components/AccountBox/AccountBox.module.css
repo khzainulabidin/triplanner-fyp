@@ -8,8 +8,10 @@
 }
 
 .accountBox_box{
-    width: 95%;
-    min-height: 95vh;
+    /*width: 95%;
+    min-height: 95vh;*/
+    width: 100%;
+    height: 100vh;
     background: var(--text-light);
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
@@ -20,7 +22,7 @@
 
 .accountBox_logoBox{
     height: 100%;
-    background: var(--text-light);
+    background: var(--text-secondary);
     border-radius: 10px 0 0 10px;
     text-align: center;
     padding-top: 20%;
@@ -28,26 +30,26 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 20px 0 20px -20px rgba(0, 0, 0, 1);
+    /*box-shadow: 20px 0 20px -20px rgba(0, 0, 0, 1);*/
     z-index: 1;
 }
 
 .accountBox_contentBox{
     height: 100%;
-    background: var(--text-dark);
+    background: var(--text-light);
     border-radius: 0 10px 10px 0;
     padding: 10%;
-    color: var(--text-light);
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);
+    color: var(--text-dark);
+    /*box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4);*/
 }
 
 .accountBox_logo{
-    width: 50%;
+    width: 45%;
     object-fit: cover;
 }
 
 .accountBox_icon{
-    width: 65%;
+    width: 60%;
     object-fit: cover;
 }
 
@@ -74,7 +76,7 @@
 }
 
 .accountBox_suggestion{
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-top: 10%;
     font-size: 0.8rem;
     display: flex;

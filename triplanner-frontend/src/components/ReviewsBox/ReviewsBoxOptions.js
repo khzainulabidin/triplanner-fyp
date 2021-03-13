@@ -14,7 +14,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import axios from "axios";
 import {useSelector} from "react-redux";
 import {selectPlace} from "../../redux/slices/explore/nearbyPlaces";
-import {selectUser} from "../../redux/slices/user/user";
+import {selectIsLoggedIn, selectUser} from "../../redux/slices/user/user";
 
 const ReviewsBoxOptions = () => {
     const [mode, setMode] = useState('most_agrees');
@@ -23,6 +23,7 @@ const ReviewsBoxOptions = () => {
     const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const place = useSelector(selectPlace);
     const user = useSelector(selectUser);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const [recommended, setRecommended] = useState(true);
     const [rating, setRating] = useState(5);
@@ -63,7 +64,9 @@ const ReviewsBoxOptions = () => {
                     <MenuItem value={'lowest_rating'}>Lowest Rating</MenuItem>
                 </Select>
             </FormControl>
-            <button className={styles.reviews_addBtn} onClick={handleClickOpen}>Add Review</button>
+            {isLoggedIn ? (
+                <button className={styles.reviews_addBtn} onClick={handleClickOpen}>Add Review</button>
+            ) : null}
 
             <Dialog
                 fullScreen={fullScreen}

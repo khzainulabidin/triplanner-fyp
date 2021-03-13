@@ -13,7 +13,7 @@ const JumboForm = ({placeholder, btnContent}) => {
 
     const search = () => {
         const api = axios.create({
-            baseURL: 'http://localhost:5000/placeDetailsProxy'
+            baseURL: 'http://localhost:5000/api/v1/proxy/placeDetailsProxy'
         });
 
         api.post('/', {

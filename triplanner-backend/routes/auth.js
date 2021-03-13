@@ -13,5 +13,6 @@ router.post('/register', register);
 router.post('/login', login);
 router.get('/me', protect, getMe);
 router.put('/updateDetails', protect, updateDetails);
+router.post('/verifyEmail/:iv/:content/:token')
 
 module.exports = router;

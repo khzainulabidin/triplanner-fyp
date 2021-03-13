@@ -1,0 +1,13 @@
+.container{
+    padding: 3% 7%;
+    width: 100%;
+}
+
+.container h1{
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin: 1% 0 3% 0;
+}
+.policies{
+    display: flex;
+}

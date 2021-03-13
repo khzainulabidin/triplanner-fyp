@@ -10,11 +10,8 @@ import {selectPlace} from "../../redux/slices/explore/nearbyPlaces";
 
 import av1 from "../../assets/av1.png";
 import av2 from "../../assets/av2.png";
-import {selectIsLoggedIn, selectUser} from "../../redux/slices/user/user";
 
 const PlaceDetail = () => {
-    const user = useSelector(selectUser);
-    const isLoggedIn = useSelector(selectIsLoggedIn);
     const place = useSelector(selectPlace);
 
     const [img, setImg] = useState(
@@ -42,9 +39,9 @@ const PlaceDetail = () => {
         }
     ];
 
-    return(
+    const content = place ? (
         <Fade>
-            <NavBar search={true} isLoggedIn={isLoggedIn} user={user}/>
+            <NavBar/>
             <PlaceJumbotron
                 title={place.name}
                 type={place.types[0].split('_').join(' ')}
@@ -61,6 +58,14 @@ const PlaceDetail = () => {
             <Reviews bg={img}/>
             <Footer/>
         </Fade>
+    ) : (
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <h1 style={{fontWeight: 300, fontSize: '200%'}}>Something went wrong!</h1>
+        </div>
+    );
+
+    return(
+        content
     );
 };
 

@@ -7,6 +7,11 @@ import styles from './App.module.css';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import PlaceDetail from "../../pages/PlaceDetail/PlaceDetail";
 import AllPlaces from "../../pages/AllPlaces/AllPlaces";
+import HotelInfo from "../../pages/HotelAccount/HotelInfo/HotelInfo";
+import RoomsInfo from "../../pages/HotelAccount/RoomsInfo/RoomsInfo";
+import HotelFacilities from "../../pages/HotelAccount/HotelFacilities/HotelFacilities";
+import Hotel from "../../pages/HotelAccount/Hotel/Hotel";
+import BookRoom from "../../pages/BookRoom/BookRoom";
 
 const App = () => (
     <Router>
@@ -24,6 +29,21 @@ const App = () => (
                     </Route>
                     <Route path={'/allPlaces'} exact>
                         <AllPlaces/>
+                    </Route>
+                    <Route path={'/hotelInfo'} exact>
+                        <HotelInfo/>
+                    </Route>
+                    <Route path={'/roomsInfo'} exact>
+                        <RoomsInfo/>
+                    </Route>
+                    <Route path={'/hotelFacilities'} exact>
+                        <HotelFacilities/>
+                    </Route>
+                    <Route path={'/business'} exact>
+                        <Hotel/>
+                    </Route>
+                    <Route path={'/bookRoom'} exact>
+                        <BookRoom/>
                     </Route>
                 </Switch>
             </div>

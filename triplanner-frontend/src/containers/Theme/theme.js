@@ -3,7 +3,8 @@ import {createMuiTheme} from "@material-ui/core";
 export const theme = createMuiTheme({
     palette:{
         primary:{
-            main: '#6C46BD',
+            /*main: '#6C46BD',*/
+            main: '#1A1A1A',
         },
         secondary:{
             main: '#04B6A9',
@@ -27,23 +28,23 @@ export const theme = createMuiTheme({
         MuiOutlinedInput:{
             root:{
                 marginBottom: 30,
-                color: '#FBFBFB !important',
+                //color: '#FBFBFB !important',
                 width: '100%',
             },
             notchedOutline:{
-                borderColor: '#FBFBFB !important',
+                //borderColor: '#FBFBFB !important',
             }
         },
 
         MuiInputLabel:{
             root:{
-                color: '#FBFBFB !important',
+                //color: '#FBFBFB !important',
             }
         },
 
         MuiSelect:{
             icon:{
-                fill: '#FBFBFB !important',
+                //fill: '#FBFBFB !important',
             },
         },
 
@@ -51,7 +52,7 @@ export const theme = createMuiTheme({
             root:{
                 width: '30%',
                 height: '40px',
-                color: '#FFFFFF !important',
+                //color: '#FFFFFF !important',
                 textTransform: 'none',
                 borderRadius: 20,
             }
@@ -74,15 +75,15 @@ export const theme = createMuiTheme({
 
         MuiChip:{
             root:{
-                color: '#FBFBFB',
+                //color: '#FBFBFB',
                 marginRight: 10,
                 marginTop: 10,
             },
             deleteIcon:{
-                fill: '#FBFBFB',
+                //fill: '#FBFBFB',
             },
             outlined:{
-                borderColor: '#FBFBFB',
+                //borderColor: '#FBFBFB',
             }
         },
 

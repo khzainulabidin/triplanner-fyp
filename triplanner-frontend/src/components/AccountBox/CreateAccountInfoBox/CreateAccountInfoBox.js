@@ -30,11 +30,14 @@ import {
 import styles from "../AccountBox.module.css";
 import {isValidName, isValidUsername} from "../../../utils/regex";
 import axios from 'axios';
+import {useHistory} from "react-router";
 
 const CreateAccountInfoBox = () => {
     const [error, setError] = useState('');
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const username = useSelector(selectUsername);
     const name = useSelector(selectName);
@@ -61,6 +64,9 @@ const CreateAccountInfoBox = () => {
                 api.post('/', user).then(res => {
                     if (res.data.success){
                         dispatch(setToken(res.data.token));
+                        if (user.accountType === 'business'){
+                            return history.push('/hotelInfo');
+                        }
                         dispatch(incrementSignUpProcess());
                     }
                     else {

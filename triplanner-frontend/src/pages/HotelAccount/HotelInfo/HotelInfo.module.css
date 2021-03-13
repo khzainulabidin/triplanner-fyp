@@ -1,0 +1,16 @@
+.hotelDetails{
+    min-height: 100vh;
+}
+
+.hotelDetailsContentContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5%;
+    width: 100%;
+}
+
+.hotelDetailsContentContainer h1{
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin: 1% 0 3% 0;
+}

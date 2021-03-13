@@ -29,7 +29,7 @@ const PlacesSection = ({isLoggedIn, user}) => {
             }));
 
             const api = axios.create({
-                baseURL: 'http://localhost:5000/nearbyPlacesProxy'
+                baseURL: 'http://localhost:5000/api/v1/proxy/nearbyPlacesProxy'
             });
 
             const defaultKeywords = shuffle(['park', 'restaurant', 'zoo', 'museum', 'cinema', 'hotel']).join('|');

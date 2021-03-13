@@ -5,15 +5,12 @@ const sendMail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const encryption = require('../utils/encryption');
 
-// @desc    Register a user
-// @route   POST /api/v1/auth/register
-// @access  Public
 exports.register = asyncHandler(async (req, res, next) => {
     const {email, password, name, username, accountType} = req.body;
 
     const encryptedEmail = encryption.encrypt(email);
     const confirmationToken = crypto.randomBytes(20).toString('hex');
-    const confirmationUrl = `${req.protocol}://${req.get('host')}/api/v1/verifyEmail/${encryptedEmail.iv}/${encryptedEmail.content}/${confirmationToken}`;
+    const confirmationUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/verifyEmail/${encryptedEmail.iv}/${encryptedEmail.content}/${confirmationToken}`;
     const message = `Thanks for signing up! Clicking on the following link to confirm your email\n\n${confirmationUrl}`;
 
     try {
@@ -39,9 +36,6 @@ exports.register = asyncHandler(async (req, res, next) => {
     sendTokenResponse(user, 200, res);
 });
 
-// @desc    Login a user
-// @route   POST /api/v1/auth/login
-// @access  Public
 exports.login = asyncHandler(async (req, res, next) => {
     const {email, password} = req.body;
     if (!email || !password){
@@ -76,9 +70,6 @@ const sendTokenResponse = (user, statusCode, res) => {
         });
 }
 
-// @desc    Get current logged in user
-// @route   POST /api/v1/auth/login
-// @access  Private
 exports.getMe = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.user.id);
     res.status(200).json({
@@ -87,9 +78,6 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     })
 })
 
-// @desc    Update user details
-// @route   PUT /api/v1/auth/updateUser
-// @access  Private
 exports.updateDetails = asyncHandler(async (req, res, next) => {
     const fieldsToUpdate = {
         interests: req.body.interests
@@ -105,3 +93,33 @@ exports.updateDetails = asyncHandler(async (req, res, next) => {
         data: user
     })
 });
+
+exports.verifyEmail = asyncHandler(async (req, res, next) => {
+    const email = {
+        iv: req.params.iv,
+        content: req.params.content
+    };
+    const decryptedEmail = encryption.decrypt(email);
+    const token = req.params.token;
+    let confirmed;
+    let user = await User.findOne({email: decryptedEmail});
+
+    if (user.confirmationToken === token){
+        await User.findByIdAndUpdate({_id: user._id}, {confirmed: true}, {
+            new: true,
+            runValidators: true,
+        });
+
+        confirmed = true;
+
+        res.status(200).json({
+            success: true,
+        })
+    }
+
+    if (!confirmed){
+        res.status(200).json({
+            success: false,
+        })
+    }
+})

@@ -1,0 +1,27 @@
+.hotelCover{
+    background: url("/src/assets/hotel_profile_cover.jpg") no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+}
+
+.coverShadow{
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+}
+
+.coverShadow > h1{
+    font-weight: 400;
+    font-size: 3rem;
+    color: var(--text-light);
+}
+
+.coverShadow > p{
+    color: var(--text-light);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    font-weight: 300;
+}

@@ -24,7 +24,7 @@ const NearbyPlaces = ({location}) => {
 
     useEffect(() => {
         const api = axios.create({
-            baseURL: 'http://localhost:5000/nearbyPlacesProxy'
+            baseURL: 'http://localhost:5000/api/v1/proxy/nearbyPlacesProxy'
         });
 
         const defaultKeywords = ['park', 'restaurant', 'zoo', 'hotel', 'museum'].join('|');
