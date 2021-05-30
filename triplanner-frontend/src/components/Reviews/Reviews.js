@@ -1,47 +1,34 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styles from './Reviews.module.css';
-import {FormControl, MenuItem, Select} from "@material-ui/core";
 import ReviewsBox from "../ReviewsBox/ReviewsBox";
 import ReviewsBoxOptions from "../ReviewsBox/ReviewsBoxOptions";
-import RecommendationBox from "../RecommendationBox/RecommendationBox";
-import QuestionsBox from "../QuestionsBox/QuestionsBox";
-import QuestionsBoxOptions from "../QuestionsBox/QuestionsBoxOptions";
+import {isAuthenticated} from "../../utils/auth";
 
-const Reviews = ({bg}) => {
-    const [mode, setMode] = useState('reviews');
-    let box;
+const Reviews = ({bg, itemId, name}) => {
+    const [authenticated, setAuthenticated] = useState(false);
 
-    switch (mode){
-        case 'reviews':
-            box = <ReviewsBox/>;
-            break;
-        case 'recommendation':
-            box = <RecommendationBox recommendation={8.9}/>;
-            break;
-        case 'questions':
-            box = <QuestionsBox/>;
-            break;
-        default:
-            box = null;
+    const authenticate = async () => {
+        try {
+            const res = await isAuthenticated('tourist');
+            setAuthenticated(res);
+        }
+        catch (e){
+            setAuthenticated(false);
+        }
     }
+
+    useEffect(() => {
+        authenticate().catch(() => setAuthenticated(false));
+    }, []);
 
     return(
         <div className={styles.reviews} style={{backgroundImage: `url(${bg})`}}>
             <div className={styles.reviews_container}>
                 <div className={styles.reviews_header}>
-                    <FormControl>
-                        <Select value={mode} onChange={e => setMode(e.target.value)}>
-                            <MenuItem value={'reviews'}>Reviews</MenuItem>
-                            <MenuItem value={'recommendation'}>Recommendation</MenuItem>
-                            <MenuItem value={'questions'}>Questions</MenuItem>
-                        </Select>
-                    </FormControl>
-
-                    {mode === 'reviews' ? <ReviewsBoxOptions/> : null}
-                    {mode === 'questions' ? <QuestionsBoxOptions/> : null}
+                    <h1>Reviews & Rating</h1>
+                    {authenticated ? <ReviewsBoxOptions itemId={itemId} name={name}/> : null}
                 </div>
-
-                {box}
+                <ReviewsBox itemId={itemId}/>
             </div>
         </div>
     );

@@ -2,14 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App/App';
-import {Provider} from "react-redux";
-import store from "./redux/store";
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css';
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-  document.getElementById('root')
+const mapScript = document.createElement("script");
+mapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
+document.head.append(mapScript);
+
+ReactDOM.render(<App/>, document.getElementById('root')
 );

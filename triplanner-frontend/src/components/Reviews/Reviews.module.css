@@ -8,10 +8,48 @@
 }
 
 .reviews_container{
-    background: rgba(26, 26, 26, 0.9);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
     padding: 5%;
     height: 100%;
     width: 100%;
+}
+
+.reviews_container h1{
+    font-weight: 300;
+    font-size: 2rem;
+    color: #1A1A1A;
+    margin-bottom: 5%;
+}
+
+.modalTitle{
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: #1A1A1A;
+    margin-bottom: 5%;
+}
+
+.noReviews{
+    color: #1A1A1A;
+    font-size: 1rem;
+    margin-top: 5%;
+}
+
+.error{
+    font-size: 0.8rem;
+    margin-bottom: 2%;
+    color: #DD5347;
+}
+
+.reviewBox{
+    border-radius: 10px;
+    margin-top: 5%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    resize: none;
+    border: 0 none;
+    outline: 0 none;
+    padding: 5%;
 }
 
 .reviews_header{
@@ -25,18 +63,18 @@
     width: fit-content;
     padding: 0 20px;
     height: 55px;
-    border: 1px solid var(--text-light);
+    border: 1px solid #1A1A1A;
     outline: 0 none;
     border-radius: 10px;
-    color: var(--text-light);
+    color: #1A1A1A;
     transition: 0.9s;
     cursor: pointer;
     margin-left: 15px;
 }
 
 .reviews_addBtn:hover{
-    background: var(--text-light);
-    color: var(--text-dark);
+    background: #1A1A1A;
+    color: #FBFBFB;
 }
 
 .reviews_box{
@@ -53,14 +91,14 @@
 }
 
 .btnContainer button{
-    border-color: var(--text-light);
-    color: var(--text-light);
+    border-color: #1A1A1A;
+    color: #1A1A1A;
     margin: 5% 0;
 }
 
 .btnContainer button:hover{
-    background: var(--text-light);
-    color: var(--text-dark);
+    background: #1A1A1A;
+    color: #FBFBFB;
 }
 
 .content_box{
@@ -71,7 +109,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--text-light);
+    color: #1A1A1A;
     height: 80%;
     flex-direction: column;
 }

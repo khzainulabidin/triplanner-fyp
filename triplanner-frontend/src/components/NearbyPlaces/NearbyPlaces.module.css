@@ -1,5 +1,4 @@
 .nearbyPlaces{
-    height: 100vh;
     display: flex;
 }
 
@@ -33,6 +32,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 10%;
 }
 
 .nearbyPlaces_btnContainer button{
@@ -47,4 +47,13 @@
 
 .nearbyPlaces_ratingSlider{
     margin: 0 5%;
+}
+
+.error{
+    text-align: center;
+    font-weight: 300;
+    font-size: 150%;
+    margin-top: 10%;
+    width: 100%;
+    color: rgba(0, 0, 0, 0.7);
 }

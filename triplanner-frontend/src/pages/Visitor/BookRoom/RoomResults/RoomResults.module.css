@@ -1,0 +1,116 @@
+.roomResults{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.roomResultsContainer{
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    height: 500px;
+    width: 100%;
+}
+
+.roomResultsContainer div{
+    margin: 2%;
+}
+
+.resultsInfo{
+    border-radius: 10px;
+    padding: 2% 4%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.resultsInfo p{
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.resultsInfo .date{
+    font-size: 0.8rem;
+    margin-top: 1%;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.resultsInfo a{
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.filtersContainer{
+    border-radius: 10px;
+    padding: 5% 10%;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.filtersContainer h4{
+    margin-bottom: 5%;
+}
+
+.filtersContainer div{
+    display: flex;
+    flex-direction: column;
+}
+
+.maxBudget{
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+}
+
+.maxBudget input, .maxBudget select{
+    height: 45px;
+    background: rgba(0, 0, 0, 0.07);
+    border: 0 none;
+    outline: 0 none;
+    padding: 0 5%;
+    border-radius: 10px 0 0 10px;
+    width: 100%;
+}
+
+.maxBudget select{
+    border-radius: 10px;
+    width: 100%;
+    appearance: none;
+}
+
+.maxBudget input::-webkit-outer-spin-button,
+.maxBudget input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.maxBudget button{
+    cursor: pointer;
+    height: 44px;
+    color: #FBFBFB;
+    background: rgba(4, 182, 169, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0 10px 10px 0;
+    border: 0 none;
+    outline: 0 none;
+    padding: 0 5%;
+}
+
+.maxBudget button:last-child{
+    margin-left: 2%;
+    border-radius: 10px;
+}
+
+.bestOption{
+    background: linear-gradient(to right, #3236A7, #04B6A9);
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.bestOption .desc{
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 2%;
+    color: #FBFBFB;
+}

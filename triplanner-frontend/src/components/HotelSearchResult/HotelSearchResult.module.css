@@ -1,0 +1,62 @@
+.hotel{
+    height: 150px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    background: #FBFBFB;
+}
+
+.hotel img{
+    height: 100%;
+    border-radius: 10px;
+    margin-right: 3%;
+    object-fit: cover;
+}
+
+.hotelInfo{
+    display: flex;
+    width: 100%;
+}
+
+.hotelInfo img{
+    object-fit: cover;
+    width: 200px;
+    height: 100%;
+}
+
+.hotelInfo div{
+    display: flex;
+    flex-direction: column;
+}
+
+.hotelName{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.hotelLocation{
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 2% 0 10% 0;
+}
+
+.viewRoomsBtn{
+    height: 45px;
+    width: 20%;
+    align-self: center;
+    margin-right: 5%;
+    padding: 0 3%;
+    background: #3236A7;
+    color: #FBFBFB;
+    outline: 0 none;
+    border: 0 none;
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.viewRoomsBtn:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}

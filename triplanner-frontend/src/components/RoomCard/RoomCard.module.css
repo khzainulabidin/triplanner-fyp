@@ -1,0 +1,90 @@
+.card{
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 20%;
+    transition: 0.7s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 2%;
+    position: relative;
+}
+
+.card:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card p{
+    font-size: 90%;
+    margin-top: 5%;
+}
+
+.icon{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.cardStat{
+    font-size: 200%;
+    font-weight: 800;
+    margin: 0 5%;
+}
+
+.cardPrice{
+    font-size: 90%;
+    background: var(--secondary-color);
+    color: rgba(255, 255, 255, 1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0;
+    margin-top: 10%;
+}
+
+.cardActions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3% 0;
+    font-size: 20%;
+    color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.cardActions span{
+    margin-right: 3%;
+}
+
+.cardActions span:hover{
+    transform: scale(1.1);
+}
+
+.rooms{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% 0;
+}
+
+.rooms p{
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.selectRoom{
+    margin: 7% 0;
+    font-size: 0.8rem;
+}

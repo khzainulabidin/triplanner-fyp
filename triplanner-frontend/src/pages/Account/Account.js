@@ -1,39 +1,51 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import {selectSignUpProgress} from "../../redux/slices/account/createAccount";
-import {selectSignInMode, selectForgotMode} from "../../redux/slices/account/signIn";
+import React, {useEffect} from 'react';
+import styles from './Account.module.css';
+import logo from "../../assets/logo.png";
+import {Link, useHistory, useLocation} from "react-router-dom";
+import Fade from "react-reveal/Fade";
 
-import SignInBox from "../../components/AccountBox/SignInBox/SignInBox";
-import CreateAccountBasicBox from "../../components/AccountBox/CreateAccountBasicBox/CreateAccountBasicBox";
-import CreateAccountInfoBox from "../../components/AccountBox/CreateAccountInfoBox/CreateAccountInfoBox";
-import CreateAccountInterestsBox from "../../components/AccountBox/CreateAccountInterestsBox/CreateAccountInterestsBox";
-import ForgotPasswordBox from "../../components/AccountBox/ForgotPasswordBox/ForgotPasswordBox";
+const Account = ({logoBoxIcon, title, children}) => {
+    const history = useHistory();
+    const location = useLocation();
+    const path = location.pathname;
 
-const Account = () => {
-    const signInMode = useSelector(selectSignInMode);
-    const forgotMode = useSelector(selectForgotMode);
-    const signUpProgress = useSelector(selectSignUpProgress);
+    useEffect(() => {
+        if (path !== '/account/createAccountInfo' && path !== '/account/interests' && localStorage.getItem('token')){
+            history.push('/');
+        }
+        //eslint-disable-next-line
+    }, []);
 
-    let screen;
+    return (
+        <div className={styles.accountBox}>
+            <div className={styles.accountBox_box}>
 
-    if (signInMode){
-        screen = <SignInBox/>;
-    }
-    else if (!signInMode && forgotMode){
-        screen = <ForgotPasswordBox/>
-    }
-    else if (!signInMode && !forgotMode && signUpProgress === 0){
-        screen = <CreateAccountBasicBox/>;
-    }
-    else if (!signInMode && !forgotMode && signUpProgress === 50) {
-        screen = <CreateAccountInfoBox/>
-    }
-    else if (!signInMode && !forgotMode && signUpProgress === 100){
-        screen = <CreateAccountInterestsBox/>;
-    }
+                <div className={styles.accountBox_logoBox}>
+                    <Fade>
+                        <Link to={'/'}>
+                            <img src={logo} alt={'logo'} className={styles.accountBox_logo}/>
+                        </Link>
+                        <img
+                            src={logoBoxIcon}
+                            alt={'logo_box_icon'}
+                            className={styles.accountBox_icon}
+                        />
+                    </Fade>
+                </div>
 
-    return(
-        screen
+                <div className={styles.accountBox_contentBox}>
+                    <Fade>
+                        <h2 className={styles.accountBox_title}>{title}</h2>
+                        <div className={styles.accountBox_form}>
+                            <form noValidate autoComplete={'off'}>
+                                {children}
+                            </form>
+                        </div>
+                    </Fade>
+                </div>
+
+            </div>
+        </div>
     );
 }
 

@@ -1,20 +1,23 @@
-import React from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {setFilters, selectFilters} from "../../redux/slices/explore/nearbyPlaces";
+import React, {useContext} from "react";
 import CheckBox from "../CheckBox/CheckBox";
+import {FiltersContext} from "../NearbyPlaces/NearbyPlaces";
 
 const Filter = ({name}) => {
-    const dispatch = useDispatch();
-    const filters = useSelector(selectFilters);
-    let checked;
+    const {filters, setFilters} = useContext(FiltersContext);
 
-    const changeFilter = filterName => {
-        dispatch(setFilters(filterName));
-        checked = filters.includes(filterName);
+    const isChecked = () => {
+        return filters.includes(name.toLowerCase().replace(' ', '_'));
+    }
+
+    const changeFilter = () => {
+        if (isChecked()){
+            return setFilters(filters.filter(filter => filter !== name.toLowerCase().replace(' ', '_')));
+        }
+        return setFilters([...filters, name.toLowerCase().replace(' ', '_')]);
     }
 
     return(
-        <CheckBox name={name} onChange={changeFilter} checked={checked} color={'#FBFBFB'}/>
+        <CheckBox name={name} onChange={changeFilter} checked={isChecked()} color={'#FBFBFB'}/>
     );
 };
 

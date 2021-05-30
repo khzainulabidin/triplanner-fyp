@@ -1,0 +1,91 @@
+.innerLay{
+    background: url("../../../assets/tripbg.jpg") 30% 100% no-repeat;
+    border-radius: 20px;
+}
+
+.tripContainer{
+    padding: 2% 4%;
+    display: grid;
+    grid-template-columns: 1.7fr 0.3fr;
+    align-items: center;
+}
+
+.tripDesc h4{
+    font-weight: 400;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.tripDesc span{
+    margin: 0 2%;
+}
+
+.tripDesc p{
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 1%;
+}
+
+.heading{
+    font-weight: 300;
+    font-size: 1.7rem;
+}
+
+.tripOptions{
+    text-transform: capitalize;
+    margin: 4% 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.tripOptions p{
+    cursor: pointer;
+    color: #04B6A9;
+    font-size: 0.9rem;
+}
+
+.tripOptions div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tripOptions div p:last-child{
+    margin-left: 5%;
+}
+
+.joinOptions{
+    color: #04B6A9;
+    display: flex;
+    align-items: center;
+}
+
+.joinOptions p{
+    margin-right: 10%;
+    cursor: pointer;
+}
+
+.noTrips{
+    font-size: 0.9rem;
+    padding: 2% 4%;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.search{
+    display: flex;
+}
+
+.search button{
+    padding: 0 3%;
+    background: #04B6A9;
+    outline: 0 none;
+    border: 0 none;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    color: #FBFBFB;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

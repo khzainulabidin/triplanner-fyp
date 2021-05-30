@@ -12,35 +12,17 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 8%;
-}
-
-:global .placesSection_sliderBtn{
-    background: transparent;
-    border: 1px solid var(--primary-light-color);
-    color: var(--primary-light-color);
-    outline: 0 none;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.5s;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-:global .placesSection_sliderBtn:hover{
-    background: var(--primary-light-color);
-    color: var(--text-light);
-}
-
-:global .placesSection_sliderBtn:disabled{
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    color: rgba(0, 0, 0, 0.2);
-    background: transparent;
+    width: 100%;
 }
 
 .placesSection_allPlacesLink{
     margin-top: 5%;
+    text-align: center;
+}
+
+.error{
+    margin-top: 5%;
+    font-size: 120%;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;
 }

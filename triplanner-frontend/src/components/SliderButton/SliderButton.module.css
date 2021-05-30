@@ -1,0 +1,28 @@
+.placesSectionSliderBtn{
+    background: transparent;
+    border: 1px solid var(--text-dark);
+    color: var(--text-dark);
+    outline: 0 none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.placesSectionSliderBtn:hover{
+    background: var(--text-dark);
+    color: var(--text-light);
+}
+
+.placesSectionSliderBtn:disabled{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.2);
+    background: transparent;
+    box-shadow: none;
+}

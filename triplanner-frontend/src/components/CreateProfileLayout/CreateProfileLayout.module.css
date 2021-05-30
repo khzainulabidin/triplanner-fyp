@@ -1,0 +1,42 @@
+.createProfile{
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+}
+
+.content{
+    width: 100%;
+    padding: 5% 5% 0 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.content input{
+    width: 100%;
+}
+
+.buttonArea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonArea button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    border: 0 none;
+    outline: 0 none;
+    cursor: pointer;
+}
+
+.error{
+    color: #DD5347;
+    font-size: 80%;
+    margin-bottom: 20px;
+}

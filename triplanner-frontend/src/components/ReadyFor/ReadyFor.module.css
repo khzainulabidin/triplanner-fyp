@@ -1,0 +1,27 @@
+.readyForTrip{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.readyForTrip p{
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.readyForTrip button{
+    padding: 1% 3%;
+    border: 0 none;
+    outline: 0 none;
+    background: #04B6A9;
+    color: #FBFBFB;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+    transform: scale(1);
+}
+
+.readyForTrip button:hover{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}

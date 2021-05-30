@@ -1,0 +1,62 @@
+.dashboard{
+    display: grid;
+    grid-template-columns: 0.4fr 1.6fr;
+    min-height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.menu{
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    margin: 40px 0;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}
+
+.logo img{
+    height: 20px;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.menuItems{
+    display: flex;
+    flex-direction: column;
+}
+
+.menuItems a{
+    padding: 15px 20px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 90%;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.menuItems a:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+:global .active{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+:global .menuIcon{
+    color: rgba(0, 0, 0, 0.7);
+    margin-right: 10px;
+}
+
+.content{
+    padding: 3%;
+    display: flex;
+    flex-wrap: wrap;
+}

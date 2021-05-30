@@ -1,0 +1,42 @@
+.verifyEmail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+.verifyEmail div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.verifyEmail p{
+    font-size: 180%;
+    font-weight: 300;
+    margin: 8% 0;
+}
+
+.verifyEmail a{
+    height: 45px;
+    width: 40%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: transparent;
+    border: 0 none;
+    outline: 0 none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 80%;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.verifyEmail a:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

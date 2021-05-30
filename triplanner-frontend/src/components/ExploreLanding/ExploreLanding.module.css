@@ -1,12 +1,13 @@
 .exploreLanding{
     background: var(--text-secondary);
-    height: 90vh;
+    height: 92vh;
     margin-top: 3px;
 }
 
 .exploreLanding_container{
     height: 100%;
     background: url("../../assets/explore_bg_icon.png") no-repeat bottom right;
+    background-size: 50%;
     padding: 5%;
 }
 

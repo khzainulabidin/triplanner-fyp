@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
 const BusinessSchema = new mongoose.Schema({
-    user_id: String,
-    businessName: String,
-    starRating: Number,
-    phone: String,
-    chatFeature: Boolean,
-    streetAddress: String,
+    userId: String,
+    name: String,
+    starRating: String,
+    address: String,
     city: String,
-    zipCode: Number,
-    rooms: Array,
-    facilities: Array,
-    checkin: String,
-    checkout: String
+    zipCode: String,
+    phone: String,
+    facilities: [String],
+    rooms: [Object],
+    availableTypes: [String],
+    totalRooms: Number,
+    availableRooms: Number,
+    roomGallery: [String],
+    messaging: Boolean,
+    userRating: Number
 });
 
 module.exports = mongoose.model('Business', BusinessSchema);

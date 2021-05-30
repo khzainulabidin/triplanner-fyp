@@ -1,0 +1,11 @@
+.users{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+
+.sectionTitle{
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 3% 0;
+}

@@ -1,0 +1,17 @@
+.noUserWindow{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.noUserWindow h4{
+    font-size: 200%;
+    font-weight: 300;
+    margin: 3% 0;
+}
+
+.noUserWindow p{
+    font-size: 90%;
+}

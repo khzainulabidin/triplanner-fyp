@@ -1,0 +1,30 @@
+.facilities{
+    width: 100%;
+}
+
+.facilities button{
+    width: 130px;
+    height: 40px;
+    border-radius: 20px;
+    background: var(--secondary-color);
+    color: var(--text-light);
+    outline: 0 none;
+    border: 0 none;
+    margin-top: 3%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.facilities button:hover{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.error{
+    color: #DD5347;
+    font-size: 80%;
+    margin-bottom: 3%;
+    background: var(--text-light);
+    width: 100%;
+    padding: 1.5% 1%;
+}

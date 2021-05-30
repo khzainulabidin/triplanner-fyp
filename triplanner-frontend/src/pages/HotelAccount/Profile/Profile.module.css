@@ -1,0 +1,92 @@
+.content{
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    width: 100%;
+    margin-top: 5%;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.name{
+    font-weight: 500;
+    font-size: 180%;
+    margin: 3% 0 5% 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating{
+    color: rgb(231, 176, 9);
+    font-size: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.contactInfo{
+    display: grid;
+    grid-template-columns: 0.2fr 1.8fr;
+    margin-top: 5%;
+    font-size: 90%;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.links{
+    padding: 20% 15%;
+    display: flex;
+    flex-direction: column;
+    font-size: 90%;
+}
+
+.links a{
+    margin-bottom: 5%;
+}
+
+:global .noUserContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.modalDesc{
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 80%;
+    margin: 3% 0;
+}
+
+.modalInput{
+    height: 45px;
+    width: 70%;
+    padding: 1% 3%;
+    border: 0 none;
+    outline: 0 none;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.error{
+    color: #DD5347;
+    font-size: 80%;
+    margin-bottom: 3%;
+}
+
+.friendButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4% 0;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.addFriend{
+    background: #04B6A9;
+    color: #FBFBFB;
+}
+
+.removeFriend{
+    color: #1A1A1A;
+    background: rgba(0, 0, 0, 0.1);
+}

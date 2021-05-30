@@ -2,62 +2,70 @@ import React, {useEffect, useState} from "react";
 import styles from './Place.module.css';
 import Rating from "@material-ui/lab/Rating";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Zoom from "react-reveal/Zoom";
-import {useDispatch} from "react-redux";
-import {setPlace} from "../../redux/slices/explore/nearbyPlaces";
-import {useHistory} from "react-router-dom";
+import {Fade} from 'react-reveal';
+import placeholder from '../../assets/placeholder.png';
+import {getPlacePhoto, getRating, openPlaceDetail} from "../../utils/misc";
 
-const Place = ({width, place}) => {
-    const [img, setImg] = useState('');
-
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const handleClick = () => {
-        dispatch(setPlace(place));
-        window.scrollTo(0, 0);
-        history.push('/placeDetail');
-    };
+const Place = ({width, place, selectable, onSelect, selected, parentId}) => {
+    const [photo, setPhoto] = useState(placeholder);
+    const [isLoading, setIsLoading] = useState(true);
+    const [rating, setRating] = useState(0);
 
     useEffect(() => {
-        if (place.photos){
-            setImg(`https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photoreference=${place.photos[0].photo_reference}&key=AIzaSyB832KgMGQLbv1FxFvsQVi3GQJfs__LQMc`);
-        }
-        else {
-            handleError();
-        }
+        getRating(place.place_id).then(res => setRating(res)).catch(() => setRating(0));
     }, [place]);
 
-    const handleError = () => {
-        setImg('http://localhost:5000/images/image_placeholder.jpg');
-    }
+    useEffect(() => {
+        if (place.photos !== undefined && place.photos !== null){
+            setIsLoading(true);
+            getPlacePhoto(setPhoto, place.photos[0].photo_reference).then(() => {
+                setIsLoading(false);
+            }).catch(() => {
+                setIsLoading(false);
+            });
+        }
+        else {
+            setPhoto(placeholder);
+        }
+        //eslint-disable-next-line
+    }, [place]);
 
     return(
-        <div className={styles.Place} style={{width: `${width}%`}} onClick={handleClick}>
-            <Zoom>
-                <img
-                    src={img}
-                    alt={place.name}
-                    onError={handleError}
-                />
-                <div className={styles.Place_infoContainer}>
-                    <h3>{place.name}</h3>
-                    {place.user_ratings_total > 0 ? (
+        isLoading ? null : (
+            <div
+                className={styles.Place}
+                style={selected ? {width: `${width}%`, border: '3px solid #04B6A9'} : {width: `${width}%`}}
+                onClick={selectable ? () => onSelect({
+                    parent: parentId,
+                    id: place.place_id,
+                    name: place.name,
+                    type: place.types[0].split('_').join(' '),
+                }) : () => openPlaceDetail(place.place_id)}
+            >
+                <Fade>
+                    <img
+                        src={photo}
+                        alt={place.name}
+                    />
+                    <div className={styles.Place_infoContainer}>
+                        <p className={'Place_type'}>{place.types[0].split('_').join(' ')}</p>
+                        <h3>{place.name}</h3>
+
                         <div className={styles.Place_ratingContainer}>
-                            <Rating
-                                value={place.rating}
-                                precision={0.5}
-                                icon={<FavoriteIcon style={{fontSize: '10px'}} />}
-                                readOnly
-                            />
-                            <p style={{marginLeft: '5px'}}>{place.user_ratings_total} reviews</p>
+                            {!rating || rating === 0 ? <p style={{fontSize: '0.7rem'}}>No reviews yet</p> : (
+                                <Rating
+                                    value={rating}
+                                    precision={0.5}
+                                    icon={<FavoriteIcon style={{fontSize: '10px'}} />}
+                                    readOnly
+                                />
+                            )}
                         </div>
-                    ) : <p>No reviews yet</p>}
-                    <p className={'Place_type'}>{place.types[0].split('_').join(' ')}</p>
-                    <p>{place.vicinity}</p>
-                </div>
-            </Zoom>
-        </div>
+                        <p>{place.vicinity}</p>
+                    </div>
+                </Fade>
+            </div>
+        )
     );
 }
 

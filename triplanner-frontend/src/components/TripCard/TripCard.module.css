@@ -1,0 +1,50 @@
+.tripCard{
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding-top: 7%;
+}
+
+.name{
+    color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.name span{
+    margin: 0 3%;
+}
+
+.actions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 30px;
+}
+
+.link{
+    width: 100%;
+    background: #04B6A9;
+    color: #FBFBFB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0 0 10px 0;
+    font-size: 0.8rem;
+}
+
+.username{
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    border-radius: 0 0 0 10px;
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.7);
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}

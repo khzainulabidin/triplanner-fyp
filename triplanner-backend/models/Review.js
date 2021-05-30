@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-    place_id: String,
-    user_id: String,
-    review: String,
+    itemId: String,
+    name: String,
+    userId: String,
     rating: Number,
-    recommended: Boolean,
-    createdAt: {
+    review: String,
+    reviewedAt: {
         type: Date,
         default: Date.now
     }

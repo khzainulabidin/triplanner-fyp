@@ -1,0 +1,16 @@
+.heading{
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+.heading span{
+    border-bottom: 2px solid #04B6A9;
+}
+
+.data > div{
+    margin-bottom: 7px;
+    display: grid;
+    grid-template-columns: 0.3fr 1.7fr;
+    font-size: 0.9rem;
+}

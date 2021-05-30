@@ -1,0 +1,98 @@
+.availableRooms{
+    min-height: 100vh;
+}
+
+.overlay{
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    color: #FBFBFB;
+    padding: 3% 6%;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+}
+
+.name{
+    font-size: 2.3rem;
+    font-weight: 600;
+}
+
+.name span{
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.desc{
+    font-size: 0.9rem;
+    margin-top: 0.5%;
+}
+
+.rating{
+    margin: 2% 0;
+}
+
+.address{
+    display: grid;
+    grid-template-columns: 0.3fr 1.7fr;
+    width: 30%;
+    margin-bottom: 2%;
+}
+
+.address p, .address a{
+    font-size: 0.9rem;
+    color: #FBFBFB;
+}
+
+.address div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profilePhoto{
+    width: 70%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.content{
+    padding: 3% 6%;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.content > p{
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin: 5% 0 3% 0;
+}
+
+.rooms{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.facilities{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.facilities div{
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.facilities div span{
+    margin-left: 5px;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}

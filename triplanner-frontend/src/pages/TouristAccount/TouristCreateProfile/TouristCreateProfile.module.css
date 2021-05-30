@@ -1,0 +1,14 @@
+.dateInput{
+    height: 45px;
+    border-radius: 10px;
+    outline: 0 none;
+    border: 0 none;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    padding: 3%;
+    margin-top: 3%;
+}
+
+.dateInputLabel{
+    font-size: 80%;
+    color: rgba(0, 0, 0, 0.7);
+}

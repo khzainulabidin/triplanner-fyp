@@ -1,10 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const {saveBusinessDetails, saveRoomsInfo, saveHotelFacilities} = require('../controllers/business');
-const {protect} = require('../middlewares/auth');
+const protect = require('../middlewares/protect');
+const {
+    updateProfile,
+    updateFacilities,
+    updateRooms,
+    updateRoom,
+    deleteGalleryPhoto,
+    updateMessaging,
+    checkoutBooking,
+    getBusinessesByLocation,
+    bookRoom
+} = require('../controllers/business');
 
-router.post('/saveBusinessDetails', protect, saveBusinessDetails);
-router.put('/saveRoomsInfo', protect, saveRoomsInfo);
-router.put('/saveHotelFacilities', protect, saveHotelFacilities)
+router.put('/profile', protect, updateProfile);
+router.put('/facilities', protect, updateFacilities);
+router.put('/rooms', protect, updateRooms);
+router.put('/room', protect, updateRoom);
+router.put('/messaging', protect, updateMessaging);
+router.put('/booking', protect, checkoutBooking);
+router.post('/deleteGalleryPhoto', protect, deleteGalleryPhoto);
+router.get('/businessesByLocation/:location', getBusinessesByLocation);
+router.post('/bookRoom', protect, bookRoom);
 
 module.exports = router;

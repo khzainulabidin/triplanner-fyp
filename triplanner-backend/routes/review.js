@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {addReview, getReview} = require('../controllers/review');
+const protect = require('../middlewares/protect');
+const {submitReview, getReviews, getUserReviews, deleteReview, getRating} = require('../controllers/review');
 
-router.route('/').post(addReview);
-router.route('/:place_id').get(getReview);
+router.post('/', protect, submitReview);
+router.get('/:itemId', getReviews);
+router.get('/', protect, getUserReviews);
+router.delete('/:itemId', protect, deleteReview);
+router.get('/rating/:itemId', getRating);
 
 module.exports = router;

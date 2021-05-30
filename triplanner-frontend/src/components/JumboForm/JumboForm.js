@@ -1,34 +1,22 @@
 import React, {useState} from "react";
 import styles from './JumboForm.module.css';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-import {setPlace} from "../../redux/slices/explore/nearbyPlaces";
-import {useHistory} from "react-router";
-import {useDispatch} from "react-redux";
-import axios from "axios";
+import {openPlaceDetail} from "../../utils/misc";
 
 const JumboForm = ({placeholder, btnContent}) => {
     const [value, setValue] = useState('');
-    const history = useHistory();
-    const dispatch = useDispatch();
 
     const search = () => {
-        const api = axios.create({
-            baseURL: 'http://localhost:5000/api/v1/proxy/placeDetailsProxy'
-        });
-
-        api.post('/', {
-            place_id: value.value.place_id,
-        }).then(res => {
-            dispatch(setPlace(res.data.response.result));
-            window.scrollTo(0, 0);
-            history.push('/placeDetail');
-        }).catch(err => console.log(err.message));
+        if (value.value.place_id !== null){
+            openPlaceDetail(value.value.place_id);
+        }
     }
 
     return(
         <div className={styles.jumboForm}>
             <GooglePlacesAutocomplete
-                apiKey={process.env.REACT_APP_GOOGLE_PLACES_API_KEY}
+                apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+                onLoadFailed={() => {}}
                 selectProps={{
                     value,
                     onChange: setValue,

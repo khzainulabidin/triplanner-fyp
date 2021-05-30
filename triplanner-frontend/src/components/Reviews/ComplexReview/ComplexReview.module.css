@@ -1,6 +1,6 @@
 .ComplexReview{
     margin: 4% 0;
-    color: var(--text-light);
+    color: #1A1A1A;
     display: flex;
     align-items: center;
 }
@@ -17,9 +17,10 @@
 }
 
 .ComplexReview_ratingContainer p{
-    font-size: 0.6rem;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.8);
     margin-left: 10px;
+    margin-bottom: 1%;
 }
 
 .ComplexReview_avatar{
@@ -31,17 +32,17 @@
     align-items: center;
     margin-top: 8px;
     font-size: 0.7rem;
-    color: var(--text-light);
+    color: #1A1A1A;
 }
 
 .ComplexReview_btnContainer button{
     cursor: pointer;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.7);
     outline: 0 none;
     border-radius: 10px;
     font-size: 0.7rem;
-    color: var(--text-light);
+    color: #1A1A1A;
     display: flex;
     align-items: center;
     padding: 1px 5px;
@@ -50,6 +51,6 @@
 }
 
 .ComplexReview_btnContainer button:hover{
-    background: var(--text-light);
-    color: var(--text-dark);
+    background: #1A1A1A;
+    color: #FBFBFB;
 }

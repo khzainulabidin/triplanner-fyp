@@ -1,22 +1,27 @@
 const express = require('express');
+const http = require('http');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const errorHandler = require('./middlewares/errorHandler');
+require('dotenv').config({path: './.env'});
+const connectDB = require('./utils/db');
 const cors = require('cors');
 
-dotenv.config({path: './config/config.env'});
-
-const usersRouter = require('./routes/users');
-const authRouter = require('./routes/auth');
+const accountRouter = require('./routes/account');
 const businessRouter = require('./routes/business');
+const touristRouter = require('./routes/tourist');
 const proxyRouter = require('./routes/proxy');
 const reviewRouter = require('./routes/review');
+const bookingRouter = require('./routes/booking');
+const messageRouter = require('./routes/message');
+const tripRouter = require('./routes/trip');
+const discussionGroupRouter = require('./routes/discussionGroup');
+
+connectDB();
 
 const app = express();
-connectDB();
+const server = http.createServer(app);
+const port = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === 'development'){
     app.use(logger('dev'));
@@ -27,11 +32,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/api/v1/users', usersRouter);
-app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/business', businessRouter);
-app.use('/api/v1/proxy', proxyRouter);
-app.use('/api/v1/review', reviewRouter);
+app.use('/account', accountRouter);
+app.use('/business', businessRouter);
+app.use('/tourist', touristRouter);
+app.use('/proxy', proxyRouter);
+app.use('/review', reviewRouter);
+app.use('/booking', bookingRouter);
+app.use('/message', messageRouter);
+app.use('/trip', tripRouter);
+app.use('/discussionGroup', discussionGroupRouter);
 
-app.use(errorHandler);
-module.exports = app;
+server.listen(port);

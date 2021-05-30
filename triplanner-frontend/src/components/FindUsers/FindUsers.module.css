@@ -1,0 +1,38 @@
+.container{
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.findUserInput{
+    outline: 0 none;
+    border: 0 none;
+    height: 45px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding: 0 20px;
+}
+
+.suggestionsBox{
+    background: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.suggestionsBox span, .suggestionsBox p{
+    display: flex;
+    align-items: center;
+    padding: 2% 3%;
+    cursor: pointer;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.suggestionsBox span:hover{
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.suggestionsBox p{
+    cursor: default;
+    user-select: none;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.5);
+}
