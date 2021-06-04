@@ -8,4 +8,4 @@ export const isValidRating = rating => /^\d+$/.test(rating);
 export const isValidAddress = address => /^[a-zA-Z0-9\s,.'-]{3,}$/.test(address);
 export const isValidZipCode = zip => /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
 export const isValidNumber = num => /^\d+$/.test(num);
-export const isValidString = str => /^[a-zA-Z.,:\-_+=|()!;\r\n'"` ]+$/.test(str);
+export const isValidString = str => /^[a-zA-Z.,:\-_+=|()?!;\r\n'"` ]+$/.test(str);

@@ -141,7 +141,7 @@ export const getRating = async id => {
     try {
         const res  = await axios.get(`${RATING_ROUTE}/${id}`);
         const data = res.data;
-        return data.data;
+        return Number(data.data);
     }
     catch (e){
         return 0;
@@ -166,13 +166,41 @@ export const removeInterest = (input, interests, setInterests) => {
     setInterests(interests.filter(interest => interest !== input))
 }
 
-export const bestOption = arr => {
+export const sortByRating = arr => {
+    return arr.sort((a, b) => a.userRating <= b.userRating ? 1 : -1);
+}
+
+export const sortByStarRating = arr => {
+    return arr.sort((a, b) => a.starRating <= b.starRating ? 1 : -1);
+}
+
+export const sortByPriceLTH = arr => {
     for (let i=0; i<arr.length; i++){
         if (arr[i].rooms.length > 0){
-            arr[i].rooms.sort((a, b) => Number(a.price) > Number(b.price) ? 1 : -1);
+            arr[i].rooms.sort((a, b) => Number(a.price) >= Number(b.price) ? 1 : -1);
         }
     }
-    return arr.sort((a, b) => ((Number(a.rooms[0].price) > Number(b.rooms[0].price)) || (a.userRating < b.userRating)) ? 1 : -1);
+    return arr.sort((a, b) => Number(a.rooms[0].price) >= Number(b.rooms[0].price) ? 1 : -1);
+}
+
+export const sortByPriceHTL = arr => {
+    for (let i=0; i<arr.length; i++){
+        if (arr[i].rooms.length > 0){
+            arr[i].rooms.sort((a, b) => Number(a.price) <= Number(b.price) ? 1 : -1);
+        }
+    }
+    return arr.sort((a, b) => Number(a.rooms[0].price) <= Number(b.rooms[0].price) ? 1 : -1);
+}
+
+export const compareFilters = (arr1, arr2) => {
+    return arr2.every(v => arr1.includes(v))
+}
+
+export const bestOption = arr => {
+    const sortedHotels = sortByRating(arr);
+    const filteredSortHotels = sortedHotels.filter(hotel => hotel.userRating >= Number(sortedHotels[0].userRating)-1);
+    const lowerPriceSortedHotels = sortByPriceLTH(filteredSortHotels).slice(0, 3);
+    return sortByStarRating(lowerPriceSortedHotels);
 }
 
 const formatMonth = month => {

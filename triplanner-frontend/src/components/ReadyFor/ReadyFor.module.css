@@ -25,3 +25,21 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
 }
+
+@media all and (max-width: 768px) {
+    .readyForTrip{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 3% 5%;
+    }
+
+    .readyForTrip p{
+        font-size: 0.9rem;
+    }
+
+    .readyForTrip button{
+        padding: 2% 4%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-top: 10%;
+    }
+}

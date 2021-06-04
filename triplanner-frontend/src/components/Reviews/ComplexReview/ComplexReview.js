@@ -4,20 +4,17 @@ import styles from './ComplexReview.module.css';
 import Rating from "@material-ui/lab/Rating";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import {getOtherProfile} from "../../../utils/auth";
+import {formatDate} from "../../../utils/misc";
 
 const ComplexReview = ({userId, review, rating, date}) => {
     const [avatar, setAvatar] = useState(null);
     const [username, setUsername] = useState('');
-    const [formattedDate, setFormattedDate] = useState('');
 
     useEffect(() => {
         getOtherProfile(userId).then(user => {
             setAvatar(`${process.env.REACT_APP_API_BASE_URL}/${user.avatar}`);
             setUsername(user.username)
         });
-
-        const jsDate = new Date(date);
-        setFormattedDate(`${jsDate.getMonth()+1}/${jsDate.getDate()}/${jsDate.getFullYear()}`);
 
         //eslint-disable-next-line
     }, [])
@@ -36,10 +33,10 @@ const ComplexReview = ({userId, review, rating, date}) => {
                         icon={<FavoriteIcon style={{fontSize: '13px'}} />}
                         readOnly
                     />
-                    <p>Reviewed by {username} on {formattedDate}</p>
+                    <p>Reviewed by {username} on {formatDate(new Date(date).getTime())}</p>
                 </div>
 
-                <p>{review}</p>
+                <p className={styles.reviewContent}>{review}</p>
             </div>
         </div>
     );

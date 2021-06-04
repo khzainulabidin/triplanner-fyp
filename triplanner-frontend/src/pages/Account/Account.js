@@ -3,6 +3,7 @@ import styles from './Account.module.css';
 import logo from "../../assets/logo.png";
 import {Link, useHistory, useLocation} from "react-router-dom";
 import Fade from "react-reveal/Fade";
+import CloseIcon from "@material-ui/icons/Close";
 
 const Account = ({logoBoxIcon, title, children}) => {
     const history = useHistory();
@@ -19,6 +20,7 @@ const Account = ({logoBoxIcon, title, children}) => {
     return (
         <div className={styles.accountBox}>
             <div className={styles.accountBox_box}>
+                <CloseIcon className={styles.closeIcon} onClick={() => history.push('/')}/>
 
                 <div className={styles.accountBox_logoBox}>
                     <Fade>

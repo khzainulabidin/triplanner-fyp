@@ -24,9 +24,10 @@ const JumboForm = ({placeholder, btnContent}) => {
                         container: (provided) => ({
                             ...provided,
                             height: '60px',
-                            width: '50%',
+                            width: window.innerWidth >= 768 ? '50%' : '100%',
                             position: 'relative',
                             borderRadius: '10px',
+                            marginTop: window.innerWidth >= 768 ? '0' : '15%'
                         }),
                         indicatorsContainer: (provided) => ({
                             ...provided,
@@ -48,7 +49,7 @@ const JumboForm = ({placeholder, btnContent}) => {
                             height: '60px',
                             border: '0 none',
                             outline: '0 none',
-                            fontSize: '18px',
+                            fontSize: window.innerWidth >= 768 ? '18px' : '14px',
                             padding: '3px 40px 3px 20px',
                             borderRadius: '10px',
                             boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
@@ -61,6 +62,7 @@ const JumboForm = ({placeholder, btnContent}) => {
                             ...provided,
                             color: '#434141',
                             cursor: 'pointer',
+                            fontSize: window.innerWidth >= 768 ? '16px' : '13px',
                         }),
                         singleValue: (provided) => ({
                             ...provided,

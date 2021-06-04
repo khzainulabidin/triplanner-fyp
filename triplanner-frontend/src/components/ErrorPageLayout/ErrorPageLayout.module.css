@@ -17,3 +17,16 @@
     font-weight: 300;
     margin-top: 3%;
 }
+
+
+@media all and (max-width: 768px) {
+    .container img{
+        width: 50%;
+        object-fit: cover;
+    }
+
+    .container p{
+        font-size: 100%;
+        margin-top: 10%;
+    }
+}

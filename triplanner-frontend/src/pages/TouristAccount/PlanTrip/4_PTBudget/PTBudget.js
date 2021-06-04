@@ -6,6 +6,7 @@ import axios from "axios";
 import {GET_AVERAGE_BUDGET, TIME_DISTANCE} from "../../../../utils/routes";
 import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner";
 import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
+import styles from '../../../../components/PlanTripLayout/PlanTripLayout.module.css'
 
 const PTBudget = ({progress, action, inputs, setInputs, clickBack}) => {
     const PETROL_PRICE_PER_LITRE = 108;
@@ -124,16 +125,7 @@ const PTBudget = ({progress, action, inputs, setInputs, clickBack}) => {
                 actionDisabled={!totalBudget || (usingOwnCar && !fuelAverage)}
                 inputs={inputs}
             >
-                {averageBudget && inputs.source && inputs.destinations && <p style={{
-                    background: '#04B6A9',
-                    marginBottom: '3%',
-                    padding: '1% 3%',
-                    color: 'white',
-                    width: 'fit-content',
-                    borderRadius: '10px',
-                    display: "flex",
-                    alignItems: "center"
-                }}>
+                {averageBudget && inputs.source && inputs.destinations && <p className={styles.budgetTipBox}>
                     <WbIncandescentIcon style={{paddingRight: '2%'}}/> People who travel from {inputs.source.name.split(',')[0]} to {inputs.destinations[inputs.destinations.length - 1].name.split(',')[0]} usually spend PKR {averageBudget}
                 </p>}
 
@@ -170,7 +162,7 @@ const PTBudget = ({progress, action, inputs, setInputs, clickBack}) => {
                     </div>
                 </div>
 
-                <div style={{background: 'white', padding: '2% 0'}}>
+                <div className={styles.budgetCheckbox}>
                     <CheckBox
                         name={"I will be using my own car and I know the fuel average"}
                         onChange={() => setInputs({...inputs, usingOwnCar: !usingOwnCar})}

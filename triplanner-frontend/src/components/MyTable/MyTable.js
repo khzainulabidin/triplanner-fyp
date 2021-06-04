@@ -21,7 +21,7 @@ import AdminTripsTable from "./AdminTripsTable";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
+        width: window.innerWidth >= 768 ? '100%' : '90vw',
     },
     paper: {
         width: '100%',

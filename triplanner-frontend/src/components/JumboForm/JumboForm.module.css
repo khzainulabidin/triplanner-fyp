@@ -34,3 +34,22 @@
 .jumboForm{
     display: flex;
 }
+
+@media all and (max-width: 768px) {
+    .jumboForm_input{
+        height: 60px;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .jumboForm_btn{
+        margin-top: 15%;
+        height: 60px;
+        width: 50px;
+        right: 13px;
+    }
+
+    .jumboForm_btn > img{
+        height: 17px;
+    }
+}

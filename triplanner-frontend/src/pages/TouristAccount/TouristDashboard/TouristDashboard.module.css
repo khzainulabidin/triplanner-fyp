@@ -9,3 +9,14 @@
     font-weight: 300;
     margin: 3% 0;
 }
+
+@media all and (max-width: 768px) {
+    .users{
+        grid-template-columns: 1fr;
+    }
+
+    .sectionTitle{
+        font-size: 1.3rem;
+        margin: 10% 0;
+    }
+}

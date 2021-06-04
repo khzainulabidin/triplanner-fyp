@@ -26,3 +26,23 @@
     background: transparent;
     box-shadow: none;
 }
+
+@media all and (max-width: 768px) {
+    .placesSectionSliderBtn{
+        height: 25px;
+        width: 25px;
+        font-size: 1rem;
+        box-shadow: none;
+        margin: 0 20%;
+        border: 0 none;
+    }
+
+    .placesSectionSliderBtn:disabled{
+        border: 0 none;
+    }
+
+    .placesSectionSliderBtn:hover{
+        background: transparent;
+        color: var(--text-dark);
+    }
+}

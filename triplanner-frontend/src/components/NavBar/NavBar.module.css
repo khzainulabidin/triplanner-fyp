@@ -34,3 +34,18 @@
     margin-left: 5%;
     cursor: pointer;
 }
+
+@media all and (max-width: 768px) {
+    .navBar_logo{
+        height: 20px;
+    }
+
+    .navBar a{
+        font-size: 0.8rem;
+    }
+
+    .navBar_avatar{
+        width: 25px;
+        height: 25px;
+    }
+}

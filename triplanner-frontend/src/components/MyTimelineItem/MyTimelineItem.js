@@ -12,7 +12,7 @@ const MyTimelineItem = ({item, coloredDot, connector, removable, deleteDestinati
             </TimelineSeparator>
             <TimelineContent>
                 <div className={styles.timelineItem}>
-                    {item.name}
+                    {item.name.split(',')[0]}
                     {removable && <CloseIcon className={styles.icon} fontSize={'small'} onClick={() => deleteDestination(item.id)}/>}
                 </div>
             </TimelineContent>

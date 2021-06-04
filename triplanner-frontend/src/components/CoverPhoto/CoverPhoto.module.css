@@ -38,3 +38,11 @@
     color: rgba(0, 0, 0, 1);
     align-self: flex-start;
 }
+
+@media all and (max-width: 768px) {
+    .businessBadge{
+        font-size: 80%;
+        padding: 0.3% 1%;
+        width: 40%;
+    }
+}

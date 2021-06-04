@@ -90,3 +90,23 @@
     color: #1A1A1A;
     background: rgba(0, 0, 0, 0.1);
 }
+
+@media all and (max-width: 768px) {
+    .content{
+        grid-template-columns: 1fr;
+        margin-top: 10%;
+    }
+
+    .name{
+        font-weight: 400;
+        font-size: 1.3rem;
+    }
+
+    .userDesc{
+        font-size: 0.8rem;
+    }
+
+    .links{
+        padding: 5% 15% 15% 15%;
+    }
+}

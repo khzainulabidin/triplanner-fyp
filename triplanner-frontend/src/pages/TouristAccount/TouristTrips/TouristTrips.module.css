@@ -89,3 +89,60 @@
     align-items: center;
     justify-content: center;
 }
+
+@media all and (max-width: 768px) {
+    .heading{
+        font-size: 1.2rem;
+    }
+
+    .tripOptions{
+        margin-top: 10%;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .tripOptions div{
+        justify-content: flex-start;
+        margin: 5% 0;
+    }
+
+    .tripOptions p{
+        font-size: 0.8rem;
+    }
+
+    .innerLay{
+        background: transparent;
+    }
+
+    .tripContainer{
+        padding: 3% 5%;
+        grid-template-columns: 1fr;
+    }
+
+    .tripDesc h4{
+        font-weight: 400;
+        font-size: 0.9rem;
+    }
+
+    .tripDesc span{
+        margin: 0 2%;
+    }
+
+    .tripDesc p{
+        font-size: 0.8rem;
+        margin: 5% 0;
+    }
+
+    .noTrips{
+        font-size: 0.8rem;
+        padding: 3% 5%;
+    }
+
+    .tripContainer a, .pLink{
+        font-size: 0.8rem;
+    }
+
+    .friendUsername{
+        margin-bottom: 3%;
+    }
+}

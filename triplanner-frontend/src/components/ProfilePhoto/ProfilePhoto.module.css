@@ -22,3 +22,12 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+@media all and (max-width: 768px) {
+    .profilePhoto{
+        height: 13vh;
+        width: 13vh;
+        border: 2px solid rgba(255, 255, 255, 1);
+        top: 18vh;
+    }
+}

@@ -61,4 +61,27 @@
     align-items: center;
     color: rgba(0, 0, 0, 0.6);
     font-size: 0.9rem;
+    padding: 0 6%;
+}
+
+@media all and (max-width: 768px) {
+    :global .backTopBar{
+        font-size: 0.9rem;
+    }
+
+    .title{
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .sectionTitle{
+        font-size: 1.1rem;
+        font-weight: 300;
+        margin: 5% 0;
+    }
+
+    .profiles{
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
 }

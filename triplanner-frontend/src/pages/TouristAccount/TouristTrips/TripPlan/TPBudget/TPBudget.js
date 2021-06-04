@@ -16,7 +16,7 @@ const TPBudget = ({trip}) => {
             <TPCard className={styles.budgetContainer}>
                 <div>
                     {Number(trip.availableBudget) < 0 && <h3 style={{marginBottom: '1%'}}>You have ran out of your budget</h3>}
-                    <p style={{marginBottom: '2%'}}>
+                    <p style={{marginBottom: '2%'}} className={styles.budgetDesc}>
                         You will{!trip.usingOwnCar && ' not'} be using your own car {trip.usingOwnCar && `with a fuel average of ${trip.fuelAverage} kilometers per litre`}
                     </p>
                     <div className={styles.budgetDetails}>

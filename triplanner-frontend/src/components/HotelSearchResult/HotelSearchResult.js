@@ -8,6 +8,7 @@ import building1 from '../../assets/building1.svg';
 import building2 from '../../assets/building2.svg';
 import axios from "axios";
 import {RATING_ROUTE} from "../../utils/routes";
+import {Fade} from 'react-reveal';
 
 const HotelSearchResult = ({name, location, hotelId, checkIn, checkOut}) => {
     const history = useHistory();
@@ -21,7 +22,7 @@ const HotelSearchResult = ({name, location, hotelId, checkIn, checkOut}) => {
         if (!data.success){
             setRating(0);
         }
-        setRating(data.data);
+        setRating(Number(data.data));
     }
 
     useEffect(() => {
@@ -35,22 +36,24 @@ const HotelSearchResult = ({name, location, hotelId, checkIn, checkOut}) => {
     }
 
     return(
-        <div className={styles.hotel}>
-            <div className={styles.hotelInfo}>
-                <img src={icon} alt={'Hotel'}/>
-                <div>
-                    <h1 className={styles.hotelName}>{name}</h1>
-                    <p className={styles.hotelLocation}>{location}</p>
-                    {rating && rating > 0.4 ? <Rating
-                        value={rating}
-                        precision={0.5}
-                        icon={<FavoriteIcon style={{fontSize: '15px'}}/>}
-                        readOnly
-                    /> : <p className={styles.hotelLocation} style={{fontSize: '0.8rem'}}>No reviews yet</p>}
+        <Fade>
+            <div className={styles.hotel}>
+                <div className={styles.hotelInfo}>
+                    <img src={icon} alt={'Hotel'}/>
+                    <div>
+                        <h1 className={styles.hotelName}>{name}</h1>
+                        <p className={styles.hotelLocation}>{location}</p>
+                        {rating && rating > 0.4 ? <Rating
+                            value={rating}
+                            precision={0.5}
+                            icon={<FavoriteIcon style={{fontSize: '15px'}}/>}
+                            readOnly
+                        /> : <p className={styles.hotelLocation} style={{fontSize: '0.8rem'}}>No reviews yet</p>}
+                    </div>
                 </div>
+                <button className={styles.viewRoomsBtn} onClick={viewRooms}>View Rooms</button>
             </div>
-            <button className={styles.viewRoomsBtn} onClick={viewRooms}>View Rooms</button>
-        </div>
+        </Fade>
     );
 }
 

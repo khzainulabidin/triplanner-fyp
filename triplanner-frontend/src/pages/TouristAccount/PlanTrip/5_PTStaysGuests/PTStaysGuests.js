@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import PlanTripLayout from "../../../../components/PlanTripLayout/PlanTripLayout";
 import CheckBox from "../../../../components/CheckBox/CheckBox";
+import styles from '../../../../components/PlanTripLayout/PlanTripLayout.module.css';
 
 const PTStaysGuests = ({progress, action, inputs, setInputs, clickBack}) => {
     const [error, setError] = useState('');
@@ -46,7 +47,7 @@ const PTStaysGuests = ({progress, action, inputs, setInputs, clickBack}) => {
                 />
             </div>
 
-            <div style={{background: "white", padding: '3%'}}>
+            <div className={styles.staysCheckBox}>
                 {inputs.destinations && inputs.destinations.map((destination, index) => (
                     <CheckBox
                         key={index}

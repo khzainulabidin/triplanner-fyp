@@ -5,11 +5,19 @@
     align-items: center;
     font-size: 1.3rem;
     font-weight: 300;
-    background: var(--text-secondary);
+    background: white;
     user-select: none;
 }
 
 .logoNavbar img{
     height: 25px;
     margin-right: 10px;
+}
+
+.logoNavbar button{
+    position: absolute;
+    left: 10%;
+    border: 0 none;
+    outline: 0 none;
+    background: transparent;
 }

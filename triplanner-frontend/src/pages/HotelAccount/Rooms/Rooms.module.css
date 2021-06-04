@@ -37,3 +37,16 @@
     border-radius: 20px;
     text-align: center;
 }
+
+@media all and (max-width: 768px) {
+    .card{
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .error{
+        width: 100%;
+        padding: 2% 3%;
+    }
+}

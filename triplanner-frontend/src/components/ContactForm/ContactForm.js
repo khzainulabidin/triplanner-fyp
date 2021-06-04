@@ -107,12 +107,16 @@ const ContactForm = ({hotelName, hotelId}) => {
                                        onChange={e => setInputs({...inputs, email: e.target.value})} disabled/>
                                 <input type={'tel'} placeholder={'Phone'} required value={inputs.phone}
                                        onChange={e => setInputs({...inputs, phone: e.target.value})}/>
+
+                                {window.innerWidth < 768 && <textarea rows={15} placeholder={'Message'} required value={inputs.message}
+                                           onChange={e => setInputs({...inputs, message: e.target.value})}/>}
+
                                 <input type={'submit'} value={'Send Message'} onClick={sendMessage}/>
                             </div>
 
                             <div>
-                        <textarea rows={15} placeholder={'Message'} required value={inputs.message}
-                                  onChange={e => setInputs({...inputs, message: e.target.value})}/>
+                                {window.innerWidth >= 768 && <textarea rows={15} placeholder={'Message'} required value={inputs.message}
+                                           onChange={e => setInputs({...inputs, message: e.target.value})}/>}
                             </div>
                         </div>
                     </Fragment> : <p>Please <Link to={'/account/signIn'}>sign in</Link> to send a message</p>}
@@ -124,6 +128,6 @@ const ContactForm = ({hotelName, hotelId}) => {
             </div>}
         </Fragment>
     );
-};
+}
 
 export default ContactForm;

@@ -16,7 +16,6 @@ const PlaceJumbotron = ({title, type, address, rating, image, phone}) => {
                         <p style={{marginTop: '8%', fontStyle: 'italic'}}>{address}</p>
                         <a href={`tel:${phone}`} style={{fontSize: '90%', marginTop: '3%'}}>{phone}</a>
 
-
                         <div className={styles.placeJumbotron_ratingContainer}>
                             {!rating || rating === 0 ? <p>No reviews yet</p> : (
                                 <Fragment>

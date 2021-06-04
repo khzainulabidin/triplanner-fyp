@@ -31,41 +31,39 @@ const Place = ({width, place, selectable, onSelect, selected, parentId}) => {
     }, [place]);
 
     return(
-        isLoading ? null : (
-            <div
-                className={styles.Place}
-                style={selected ? {width: `${width}%`, border: '3px solid #04B6A9'} : {width: `${width}%`}}
-                onClick={selectable ? () => onSelect({
-                    parent: parentId,
-                    id: place.place_id,
-                    name: place.name,
-                    type: place.types[0].split('_').join(' '),
-                }) : () => openPlaceDetail(place.place_id)}
-            >
-                <Fade>
-                    <img
-                        src={photo}
-                        alt={place.name}
-                    />
-                    <div className={styles.Place_infoContainer}>
-                        <p className={'Place_type'}>{place.types[0].split('_').join(' ')}</p>
-                        <h3>{place.name}</h3>
+        !isLoading && place && place.types && <div
+            className={styles.Place}
+            style={selected ? {width: `${width}%`, border: '3px solid #04B6A9'} : {width: `${width}%`}}
+            onClick={selectable ? () => onSelect({
+                parent: parentId,
+                id: place.place_id,
+                name: place.name,
+                type: place.types[0].split('_').join(' '),
+            }) : () => openPlaceDetail(place.place_id)}
+        >
+            <Fade>
+                <img
+                    src={photo}
+                    alt={place.name}
+                />
+                <div className={styles.Place_infoContainer}>
+                    <p className={'Place_type'}>{place.types[0].split('_').join(' ')}</p>
+                    <h3>{place.name}</h3>
 
-                        <div className={styles.Place_ratingContainer}>
-                            {!rating || rating === 0 ? <p style={{fontSize: '0.7rem'}}>No reviews yet</p> : (
-                                <Rating
-                                    value={rating}
-                                    precision={0.5}
-                                    icon={<FavoriteIcon style={{fontSize: '10px'}} />}
-                                    readOnly
-                                />
-                            )}
-                        </div>
-                        <p>{place.vicinity}</p>
+                    <div className={styles.Place_ratingContainer}>
+                        {!rating || rating === 0 ? <p style={{fontSize: '0.7rem'}}>No reviews yet</p> : (
+                            <Rating
+                                value={Number(rating)}
+                                precision={0.5}
+                                icon={<FavoriteIcon style={{fontSize: '10px'}} />}
+                                readOnly
+                            />
+                        )}
                     </div>
-                </Fade>
-            </div>
-        )
+                    <p>{place.vicinity}</p>
+                </div>
+            </Fade>
+        </div>
     );
 }
 

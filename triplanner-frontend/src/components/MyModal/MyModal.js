@@ -9,7 +9,7 @@ const MyModal = ({open, setOpen, actionText, action, children, disabled=false, b
             <div className={style.modal} style={{display: open ? 'flex' : 'none'}}>
                 <div className={style.modalContent}>
                     <div className={style.modalHeader}>
-                        <CloseIcon style={{cursor: 'pointer'}} fontSize={'large'} onClick={() => setOpen(false)}/>
+                        <CloseIcon style={{cursor: 'pointer'}} fontSize={window.innerWidth >= 768 ? 'large' : 'small'} onClick={() => setOpen(false)}/>
                     </div>
 
                     <div className={style.modalBody}>

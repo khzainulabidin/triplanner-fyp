@@ -73,7 +73,7 @@ const Profile = () => {
                             <div style={{padding: '3% 5%'}}>
                                 <p className={style.name}>
                                     <span>{user.name}</span>
-                                    <span className={style.rating}><StarIcon/> {rating}</span>
+                                    <span className={style.rating}><StarIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> {rating}</span>
                                 </p>
                                 <p>A {user.starRating} star hotel located in {user.city}</p>
 
@@ -93,7 +93,7 @@ const Profile = () => {
                             </div>
                         </MyCard>
 
-                        <MyCard style={{height: '45%'}}>
+                        <MyCard>
                             <div className={style.links}>
                                 <Link to={'/business/createProfile'}>Edit profile</Link>
                                 <Link to={'/business/profile'} onClick={() => setOpen(true)} style={{color: '#DD5145'}}>Delete your account</Link>

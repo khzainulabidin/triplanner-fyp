@@ -71,3 +71,29 @@
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.7);
 }
+
+@media all and (max-width: 768px) {
+    .contact{
+        padding: 6%;
+    }
+
+    .contact .title{
+        font-size: 1.3rem;
+    }
+
+    .contact .error{
+        font-size: 0.8rem;
+    }
+
+    .contactContainer{
+        grid-template-columns: 1fr;
+    }
+
+    .successTitle{
+        font-size: 1.3rem;
+    }
+
+    .successDesc{
+        font-size: 0.8rem;
+    }
+}

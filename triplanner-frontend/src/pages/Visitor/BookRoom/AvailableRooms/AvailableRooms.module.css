@@ -51,10 +51,12 @@
 }
 
 .profilePhoto{
-    width: 70%;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    align-self: center;
 }
 
 .content{
@@ -75,8 +77,8 @@
 }
 
 .facilities{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .facilities div{
@@ -95,4 +97,60 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
     width: 100%;
+}
+
+@media all and (max-width: 768px) {
+    .overlay{
+        padding: 6% 4%;
+        grid-template-columns: 1.7fr 0.3fr;
+    }
+
+    .name{
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+
+    .desc{
+        font-size: 0.8rem;
+    }
+
+    .rating{
+        margin-bottom: 10%;
+    }
+
+    .address{
+        grid-template-columns: 0.3fr 1.7fr;
+        width: 100%;
+    }
+
+    .address p, .address a{
+        font-size: 0.8rem;
+    }
+
+    .profilePhoto{
+        width: 70px;
+        height: 70px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    }
+
+    .facilities{
+        grid-template-columns: 1fr 1fr;
+        font-size: 0.8rem;
+    }
+
+    .gallery{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .rooms{
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 5% 0;
+        grid-row-gap: 20px;
+    }
+
+    .availableTitle{
+        font-size: 1.3rem !important;
+        margin-top: 10% !important;
+    }
 }

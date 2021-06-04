@@ -75,7 +75,8 @@ const PlaceDetail = () => {
         <Fragment>
             <LoadingSpinner isLoading={isLoading}/>
             <NavBar/>
-            {error ? <p style={{marginTop: '10%', textAlign: 'center'}}>{error}</p> : isLoading ? null : place === undefined || null ? null : (
+            {error && <p style={{marginTop: '10%', textAlign: 'center'}}>{error}</p>}
+            {!isLoading && place && place.types && place.geometry && <Fragment>
                 <Fade>
                     <PlaceJumbotron
                         title={place.name}
@@ -88,11 +89,11 @@ const PlaceDetail = () => {
                     <NearbyPlaces placeLocation={{
                         lat: place.geometry.location.lat,
                         lng: place.geometry.location.lng,
-                    }}/>
+                    }} placeId={placeId}/>
                     <Reviews bg={photo} itemId={placeId} name={place.name}/>
                     <Footer/>
                 </Fade>
-            )}
+            </Fragment>}
         </Fragment>
     );
 }

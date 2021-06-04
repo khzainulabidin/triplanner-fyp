@@ -114,7 +114,13 @@ exports.getRating = async (req, res) => {
         for (let i=0; i<reviews.length; i++){
             totalRating += Number(reviews[i].rating);
         }
-        const finalRating = totalRating/reviews.length;
+        let finalRating = totalRating/reviews.length;
+        if (finalRating > 0){
+            finalRating = finalRating.toFixed(1);
+        }
+        else {
+            finalRating = 0;
+        }
 
         res.send({
             success: true,

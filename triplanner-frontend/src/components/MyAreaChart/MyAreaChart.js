@@ -3,7 +3,7 @@ import {Area, AreaChart, Tooltip, XAxis} from "recharts";
 const MyAreaChart = ({data, dataKey}) => {
     return(
         <AreaChart
-            width={550}
+            width={window.innerWidth > 768 ? 550 : 420}
             height={300}
             data={data}
             margin={{

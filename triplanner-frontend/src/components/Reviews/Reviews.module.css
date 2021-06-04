@@ -117,3 +117,56 @@
 .recommendation{
     font-size: 6rem;
 }
+
+@media all and (max-width: 768px) {
+    .content_box{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .reviews_container{
+        padding: 10% 5%;
+    }
+
+    .reviews_container h1{
+        font-size: 1.4rem;
+    }
+
+    .reviews_addBtn{
+        padding: 0 10px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .modalTitle{
+        font-size: 1.3rem;
+        margin-bottom: 15%;
+    }
+
+    .noReviews{
+        font-size: 0.8rem;
+        margin-top: 20%;
+    }
+
+    .btnContainer{
+        width: 100%;
+        margin-top: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 10%;
+    }
+
+    .btnContainer button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        box-shadow: none;
+        border: 0 none;
+    }
+
+    .reviews_box{
+        width: 100%;
+    }
+}

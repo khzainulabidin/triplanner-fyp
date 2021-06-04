@@ -153,7 +153,7 @@ const CommonPoint = () => {
                 </Fade>
 
                 {destinationInput !== 'select' && commonTrips.length < 1 && <Fade><div className={styles.noTrips}>
-                    <p>Unfortunately, there are no common trips for {destinationInput.split('|')[0]} on he same day</p>
+                    <p>Unfortunately, there are no common trips for {destinationInput.split('|')[0]} on the same day</p>
                 </div></Fade>}
 
                 {commonTrips && commonTrips.length > 0 &&

@@ -14,3 +14,18 @@
     grid-template-columns: 0.3fr 1.7fr;
     font-size: 0.9rem;
 }
+
+@media all and (max-width: 768px) {
+    .heading{
+        font-size: 1rem;
+    }
+
+    .heading span{
+        border-bottom: 1px solid #04B6A9;
+    }
+
+    .data > div{
+        grid-template-columns: 0.35fr 0.65fr;
+        font-size: 0.85rem;
+    }
+}

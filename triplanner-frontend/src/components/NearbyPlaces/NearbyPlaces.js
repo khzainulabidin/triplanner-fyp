@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     }
 });
 
-const NearbyPlaces = ({placeLocation}) => {
+const NearbyPlaces = ({placeLocation, placeId}) => {
     const [mode, setMode] = useState('list');
     const [startingIndex, setStartingIndex] = useState(0);
     const [endingIndex, setEndingIndex] = useState(6);
@@ -34,14 +34,13 @@ const NearbyPlaces = ({placeLocation}) => {
     const [interests, setInterests] = useState([]);
     const [nearbyPlaces, setNearbyPlaces] = useState([]);
     const [error, setError] = useState('');
-    // eslint-disable-next-line no-unused-vars
     const [location, setLocation] = useState(null);
     const [filters, setFilters] = useState([]);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
     const providerValue = useMemo(() => ({filters, setFilters}), [filters]);
 
-    const placeWidth = 30;
+    const placeWidth = window.innerWidth >= 768 ? 30 : 100;
     const classes = useStyles();
 
     useEffect(() => {
@@ -83,7 +82,15 @@ const NearbyPlaces = ({placeLocation}) => {
                         <Fragment>
                             <LoadingSpinner isLoading={isLoading}/>
                             <div className={styles.nearbyPlaces_placesContainer}>
-                                {filteredPlaces.slice(startingIndex, endingIndex).map((place, index) => (
+                                {!placeId && filteredPlaces.slice(startingIndex, endingIndex).map((place, index) => (
+                                    <Place
+                                        key={index}
+                                        width={placeWidth}
+                                        place={place}
+                                    />
+                                ))}
+
+                                {placeId && filteredPlaces.filter(place => place.place_id !== placeId).slice(startingIndex, endingIndex).map((place, index) => (
                                     <Place
                                         key={index}
                                         width={placeWidth}
@@ -92,7 +99,7 @@ const NearbyPlaces = ({placeLocation}) => {
                                 ))}
                             </div>
 
-                            {filteredPlaces.length < 6 ? null : (
+                            {filteredPlaces.length <= 6 ? null : (
                                 <div className={styles.nearbyPlaces_btnContainer}>
                                     <SliderPrevButton
                                         startingIndex={startingIndex}
@@ -122,12 +129,12 @@ const NearbyPlaces = ({placeLocation}) => {
                                 height: '100%'
                             }}
                             center={{
-                                lat: placeLocation.lat,
-                                lng: placeLocation.lng
+                                lat: location.lat,
+                                lng: location.lng
                             }}
                             zoom={18}
                         >
-                            <Marker position={placeLocation} animation={'Bounce'} opacity={0.9}/>
+                            <Marker position={location} animation={'Bounce'} opacity={0.9}/>
                             <TransitLayer/>
                             <BicyclingLayer/>
                         </GoogleMap>

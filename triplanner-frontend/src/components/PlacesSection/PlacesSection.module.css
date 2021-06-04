@@ -26,3 +26,17 @@
     color: rgba(0, 0, 0, 0.6);
     font-weight: 400;
 }
+
+@media all and (max-width: 768px) {
+    .placesSection_allPlacesLink{
+        font-size: 0.8rem;
+        margin-top: 15%;
+    }
+
+    .placesSection_places{
+        display: grid;
+        grid-template-columns: 0.1fr 1.8fr 0.1fr;
+        margin-top: 8%;
+        width: 100%;
+    }
+}

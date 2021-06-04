@@ -14,13 +14,16 @@ const NavBar = () => {
 
     const history = useHistory();
 
+    const fetchUser = async () => {
+        const user = await getMe();
+        setUser(user);
+        setAvatar(`${process.env.REACT_APP_API_BASE_URL}/${user.avatar}`);
+        setIsLoading(false);
+    }
+
     useEffect(() => {
         if (localStorage.getItem('token')){
-            getMe().then(user => {
-                setUser(user);
-                setAvatar(`${process.env.REACT_APP_API_BASE_URL}/${user.avatar}`);
-                setIsLoading(false);
-            }).catch(() => {
+            fetchUser().catch(() => {
                 setUser(null);
                 setIsLoading(false);
             });
@@ -28,6 +31,8 @@ const NavBar = () => {
         else {
             setIsLoading(false);
         }
+
+        return () => {setIsLoading(false)}
         //eslint-disable-next-line
     }, []);
 

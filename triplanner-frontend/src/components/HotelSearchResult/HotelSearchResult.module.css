@@ -60,3 +60,35 @@
 .viewRoomsBtn:hover{
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
+
+@media all and (max-width: 768px) {
+    .hotel{
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 10% 0;
+    }
+
+    .viewRoomsBtn{
+        height: 35px;
+        margin-top: 8%;
+        width: 100%;
+        margin-right: 5%;
+        padding: 0 3%;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .hotelName{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .hotelLocation{
+        font-size: 0.8rem;
+    }
+
+    .hotelInfo img{
+        width: 100px;
+        margin-top: 5%;
+    }
+}

@@ -3,7 +3,7 @@ import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner
 import PlanTripLayout from "../../../../components/PlanTripLayout/PlanTripLayout";
 import axios from "axios";
 import {GET_BUSINESSES_BY_LOCATION} from "../../../../utils/routes";
-import {bestOption} from "../../../../utils/misc";
+import {bestOption, getRating} from "../../../../utils/misc";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 import SuggestRoomCard from "../../../../components/SuggestRoomCard/SuggestRoomCard";
 import CloseIcon from "@material-ui/icons/Close";
@@ -36,6 +36,9 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
                 localHotels.push(null);
             }
             else {
+                for (let i=0; i<data.data.length; i++){
+                    data.data[i].userRating = await getRating(data.data[i].userId);
+                }
                 const bestHotel = bestOption(data.data);
                 localHotels.push(bestHotel[0]);
             }
@@ -94,7 +97,7 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
                             </div>
                         ))}
 
-                        <p style={{background: '#04B6A9', marginBottom: '2%', padding: '1% 3%', color: 'white', width: 'fit-content', borderRadius: '10px'}}>
+                        <p style={{background: '#04B6A9', marginBottom: '2%', margin: window.innerWidth > 768 ? '' : '5% 0', padding: window.innerWidth > 768 ? '1% 3%' : '2% 5%', color: 'white', width: 'fit-content', borderRadius: '10px'}}>
                             Available budget: PKR {inputs.availableBudget}
                         </p>
 
@@ -105,7 +108,7 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
                                         <h4>{inputs.placesToStay[index].name}</h4></div>
                                     <hr style={{marginBottom: '2%'}}/>
                                     {hotel && hotel.rooms.filter(room => (Number(room.price) <= Number(inputs.availableBudget)) && Number(room.number_of_rooms) > 0).length > 0 ?
-                                        <div style={{display: "grid", gridTemplateColumns: '1fr 1fr 1fr', gridGap: '10px'}}>
+                                        <div style={{display: "grid", gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr 1fr' : '1fr', gridGap: '10px'}}>
                                             {hotel.rooms
                                                 .filter(room => (Number(room.price) <= Number(inputs.availableBudget)) && Number(room.number_of_rooms) > 0)
                                                 .map(room => (

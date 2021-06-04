@@ -2,6 +2,7 @@
     height: 90vh;
     margin-top: 3px;
     background: var(--text-light);
+    margin-bottom: 60%;
 }
 
 .placeJumbotron_overlay{
@@ -52,4 +53,18 @@
 
 .placeJumbotron_reviewsContainer{
     margin: 10% 0;
+}
+
+@media all and (max-width: 768px) {
+    .placeJumbotron_box{
+        grid-template-columns: 1fr;
+    }
+
+    .placeJumbotron_infoContainer h1{
+        font-size: 1.4rem;
+    }
+
+    .placeJumbotron_infoContainer p{
+        font-size: 0.8rem;
+    }
 }

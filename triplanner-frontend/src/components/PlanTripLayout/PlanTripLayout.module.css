@@ -166,3 +166,125 @@
     font-weight: 400;
     margin-bottom: 2%;
 }
+
+.budgetCheckbox{
+    padding: 2% 0;
+    background: white;
+}
+
+.budgetTipBox{
+    background: #04B6A9;
+    margin-bottom: 3%;
+    padding: 1% 3%;
+    color: white;
+    width: fit-content;
+    border-radius: 10px;
+    display: flex;
+    align-items: center
+}
+
+.staysCheckBox{
+    background: white;
+    padding: 3%;
+}
+
+@media all and (max-width: 768px) {
+    :global .PTGridContainer{
+        display: grid;
+        grid-template-columns: 1fr !important;
+        width: 100%;
+        grid-row-gap: 30%;
+        margin: 5% 0;
+    }
+
+    :global .PTInput{
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .modalHeading{
+        font-weight: 300;
+        font-size: 2rem;
+        margin-bottom: 3%;
+    }
+
+    .actionButton{
+        padding: 2% 5%;
+    }
+
+    .title{
+        font-size: 1.8rem;
+        margin-bottom: 4%;
+    }
+
+    .closeIcon{
+        font-size: 1.3rem;
+    }
+
+    .backIcon{
+        font-size: 1.3rem;
+    }
+
+    .staysCheckBox{
+        font-size: 0.8rem;
+    }
+
+    .description{
+        font-size: 0.9rem;
+        color: rgba(0, 0, 0, 0.7);
+        margin-bottom: 8%;
+    }
+
+    .skipButton{
+        right: 20%;
+    }
+
+    .budgetCheckbox{
+        margin-top: 10%;
+        padding: 2% 0 2% 0;
+        background: white;
+        font-size: 0.8rem;
+    }
+
+    .budgetTipBox{
+        margin: 5% 0;
+        padding: 3% 5%;
+        font-size: 0.8rem;
+    }
+
+    .modalError{
+        color: rgba(0, 0, 0, 0.7);
+        line-height: 25px;
+    }
+
+    :global .PTPlaceContainer{
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+    }
+
+    :global .PTNoPlaces{
+        font-size: 0.8rem;
+        grid-template-columns: 0.3fr 1.7fr;
+        padding: 4% 3%;
+        margin: 5% 0;
+    }
+
+    :global .PTHotelsContainer{
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px;
+    }
+
+    :global .PTHotelsContainer h4{
+        font-size: 1.1rem;
+        font-weight: 400;
+        margin: 5% 0;
+    }
+
+    .modalHeading{
+        font-size: 1.2rem;
+        margin-bottom: 10%;
+    }
+
+    .modalError{
+        font-size: 0.9rem;
+    }
+}

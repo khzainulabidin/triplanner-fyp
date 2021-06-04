@@ -11,22 +11,21 @@ import {getPlaces} from "../../utils/misc";
 
 const PlacesSection = () => {
     const [startingIndex, setStartingIndex] = useState(0);
-    const [endingIndex, setEndingIndex] = useState(3);
+    const [endingIndex, setEndingIndex] = useState(window.innerWidth >= 768 ? 3 : 1);
     const [isLoading, setIsLoading] = useState(true);
     const [interests, setInterests] = useState([]);
     const [nearbyPlaces, setNearbyPlaces] = useState([]);
     const [error, setError] = useState('');
 
-    const placeWidth = 27;
+    const placeWidth = window.innerWidth >= 768 ? 27 : 100;
 
     useEffect(() => {
         setIsLoading(true);
         getPlaces(setInterests, interests, setNearbyPlaces, setError)
             .then(() => setIsLoading(false))
-            .catch((e) => {
+            .catch(() => {
                 setIsLoading(false);
                 setError('Cannot connect to the server');
-                console.log(e.message);
             });
         //eslint-disable-next-line
     }, []);
@@ -41,7 +40,7 @@ const PlacesSection = () => {
                         titleHighlight={interests.length > 0 ? 'Interests' : 'Nearby'}
                     />
                     <div className={styles.placesSection_places}>
-                        {nearbyPlaces.length < 3 ? null : (
+                        {nearbyPlaces.length < 3 ? <div> </div> : (
                             <SliderPrevButton
                                 startingIndex={startingIndex}
                                 endingIndex={endingIndex}
@@ -59,7 +58,7 @@ const PlacesSection = () => {
                             />
                         ))}
 
-                        {nearbyPlaces.length < 3 ? null : (
+                        {nearbyPlaces.length < 3 ? <div> </div> : (
                             <SliderNextButton
                                 startingIndex={startingIndex}
                                 endingIndex={endingIndex}

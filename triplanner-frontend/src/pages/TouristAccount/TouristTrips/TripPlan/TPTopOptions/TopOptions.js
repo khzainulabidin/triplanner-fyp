@@ -8,13 +8,13 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const TopOptions = ({printPage, trip, user, deletePlan}) => {
     return(
         <TPCard className={styles.topOptions}>
-            <Link to={'/trips'}><ArrowBackIcon/> <span>View all trips</span></Link>
+            <Link to={'/trips'}><ArrowBackIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> <span>View all trips</span></Link>
             {trip.userId === user.userId && <div>
-                <p onClick={printPage}><SaveIcon/> <span>Save offline</span></p>
-                <p onClick={deletePlan}><DeleteIcon/> <span>Delete plan</span></p>
+                <p onClick={printPage}><SaveIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> {window.innerWidth >= 768 && <span>Save offline</span>}</p>
+                <p onClick={deletePlan}><DeleteIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> {window.innerWidth >= 768 && <span>Delete plan</span>}</p>
             </div>}
         </TPCard>
     );
-}
+};
 
 export default TopOptions;

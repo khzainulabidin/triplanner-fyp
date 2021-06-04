@@ -70,3 +70,23 @@
 .icon img{
     object-fit: cover;
 }
+
+@media all and (max-width: 768px) {
+    .container{
+        grid-template-columns: 1fr;
+        padding: 5%;
+    }
+
+    .container p{
+        font-size: 1.1rem;
+        margin: 4% 0;
+    }
+
+    .error{
+        font-size: 0.8rem;
+    }
+
+    .icon{
+        display: none;
+    }
+}

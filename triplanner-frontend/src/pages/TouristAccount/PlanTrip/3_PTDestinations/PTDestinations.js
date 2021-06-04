@@ -82,7 +82,7 @@ const PTDestinations = ({progress, action, inputs, setInputs, clickBack}) => {
                         control: (provided) => ({
                             ...provided,
                             height: '45px',
-                            boxShadow: '0 0 30px rgba(0, 0, 0, 0.2)',
+                            boxShadow: window.innerWidth >= 768 ? '0 0 30px rgba(0, 0, 0, 0.2)' : '0 0 5px rgba(0, 0, 0, 0.2)',
                             border: '0 none',
                             outline: '0 none',
                             borderRadius: '10px',

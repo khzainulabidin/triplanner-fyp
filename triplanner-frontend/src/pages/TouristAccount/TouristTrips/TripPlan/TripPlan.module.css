@@ -171,3 +171,103 @@
     padding: 0 3%;
     appearance: none;
 }
+
+@media all and (max-width: 768px) {
+    .topOptions{
+        grid-template-columns: 1.7fr 0.3fr;
+        font-size: 0.8rem;
+    }
+
+    .sourceDestInfo h1{
+        font-size: 1.1rem;
+    }
+
+    .sourceDestInfo p{
+        font-size: 0.8rem;
+    }
+
+    .timelineTime{
+        font-size: 0.7rem;
+        margin-top: 5%;
+    }
+
+    .timelineCard{
+        padding: 4% 5%;
+    }
+
+    .timelineCard h4{
+        font-size: 0.9rem;
+    }
+
+    .timelineCard p{
+        font-size: 0.7rem;
+        margin-top: 1%;
+    }
+
+    .cardTitle{
+        font-size: 1.3rem;
+        margin: 5% 0;
+    }
+
+    .budgetDetails{
+        display: grid;
+        grid-template-columns: 0.4fr 0.6fr;
+        margin-bottom: 0.8%;
+        font-size: 0.85rem;
+    }
+
+    .budgetContainer{
+        padding: 5%;
+    }
+
+    .budgetDesc{
+        font-size: 0.85rem;
+        padding-bottom: 5%;
+    }
+
+    .weatherContainer{
+        grid-template-columns: 1fr;
+    }
+
+    .updatePrivacy{
+        width: 100%;
+    }
+
+    .bookingContainer{
+        grid-template-columns: 0.3fr 0.7fr;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        grid-row-gap: 0;
+    }
+
+    .bookingContainer h3{
+        font-size: 1rem;
+        margin: 3% 0;
+    }
+
+    .bookingContainer > .price{
+        font-size: 0.8rem;
+        border-radius: 10px 0 0 0;
+    }
+
+    .bookingContainer .roomDesc, .bookingStatus{
+        font-size: 0.8rem;
+    }
+
+    .bookingContainer .cancelBooking{
+        background: #04B6A9;
+        color: #FBFBFB;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 4% 0;
+        border-radius: 0 0 0 10px;
+    }
+
+    .bookingStatus{
+        font-size: 0.8rem;
+        padding-top: 2%;
+    }
+
+    .bookingInfo{
+        padding: 2% 0;
+    }
+}

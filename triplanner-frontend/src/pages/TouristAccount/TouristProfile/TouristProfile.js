@@ -90,26 +90,26 @@ const TouristProfile = () => {
                                     <span>{user.name}</span>
                                 </p>
 
-                                <p style={{marginBottom: '5%'}}>Lives in <b>{user.city}</b> {!user.interests || user.interests.length === 0 ?
+                                <p className={style.userDesc} style={{marginBottom: '5%'}}>Lives in <b>{user.city}</b> {!user.interests || user.interests.length === 0 ?
                                     null :
                                     <span> and likes {user.interests.length === 1 ?
                                         user.interests[user.interests.length-1] :
                                         user.interests.slice(0, user.interests.length-1).join(', ')} and {user.interests[user.interests.length-1]}
                                     </span>}</p>
 
-                                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr'}}>
+                                <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', marginTop: window.innerWidth < 768 ? '10%' : ''}} className={style.userDesc}>
                                     <div className={style.contactInfo} style={{marginTop: '3%', alignItems: 'center'}}>
-                                        <WcIcon style={{color: '#7D7D7D'}}/>
+                                        <WcIcon style={{color: '#7D7D7D'}} fontSize={window.innerWidth < 768 ? 'small' : 'medium'}/>
                                         <p style={{textTransform: 'capitalize', marginLeft: '5%'}}>{user.gender}</p>
                                     </div>
 
                                     <div className={style.contactInfo} style={{marginTop: '3%', alignItems: 'center'}}>
-                                        <CakeIcon style={{color: '#7D7D7D'}}/>
+                                        <CakeIcon style={{color: '#7D7D7D'}} fontSize={window.innerWidth < 768 ? 'small' : 'medium'}/>
                                         <p style={{marginLeft: '5%'}}>{user.dob}</p>
                                     </div>
 
                                     <div className={style.contactInfo} style={{marginTop: '3%', alignItems: 'center'}}>
-                                        <MailOutlineIcon style={{color: '#7D7D7D'}}/>
+                                        <MailOutlineIcon style={{color: '#7D7D7D'}} fontSize={window.innerWidth < 768 ? 'small' : 'medium'}/>
                                         <p style={{marginLeft: '5%'}}>{user.email}</p>
                                     </div>
                                 </div>

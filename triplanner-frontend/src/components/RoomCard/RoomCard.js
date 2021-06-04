@@ -51,8 +51,8 @@ const RoomCard = ({room, deleteRoom, popError, readOnly, selectRoomLink}) => {
 
             <p style={{
                 textTransform: 'capitalize',
-                fontSize: readOnly ? '1.5rem' : '0.9rem',
-                marginTop: readOnly ? '30px' : '10px'
+                fontSize: readOnly ? window.innerWidth >= 768 ? '1.5rem' : '1.2rem' : '0.9rem',
+                marginTop: readOnly ? window.innerWidth >= 768 ? '30px' : '10px' : '10px'
             }}>{type}</p>
             <span className={style.cardPrice}>PKR {price}</span>
 

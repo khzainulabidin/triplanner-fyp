@@ -20,3 +20,15 @@
     text-decoration: none;
     margin: 0 2%;
 }
+
+@media all and (max-width: 768px) {
+    .footer > div{
+        display: none;
+    }
+
+    .footer > p{
+        font-size: 0.8rem;
+        text-align: center;
+        width: 100%;
+    }
+}

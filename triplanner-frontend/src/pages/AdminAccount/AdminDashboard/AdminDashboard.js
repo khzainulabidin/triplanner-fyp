@@ -64,45 +64,45 @@ const AdminDashboard = () => {
     ];
 
     useEffect(() => {
-        let totalUsers = 0;
-        const localUsers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const localUsers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], currentYear = new Date().getFullYear();
 
         for (let i=0; i<usersData.length; i++){
-            const month = new Date(usersData[i].createdAt).getMonth();
-            localUsers[month] = localUsers[month]+1;
-            totalUsers = totalUsers+1;
+            if (new Date(usersData[i].createdAt).getFullYear() === currentYear){
+                const month = new Date(usersData[i].createdAt).getMonth();
+                localUsers[month] = localUsers[month]+1;
+            }
         }
 
         setUsers(localUsers);
-        setUsersTotal(totalUsers);
+        setUsersTotal(usersData.length);
     }, [usersData])
 
     useEffect(() => {
-        let totalTrips = 0;
-        const localTrips = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const localTrips = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], currentYear = new Date().getFullYear();
 
         for (let i=0; i<tripsData.length; i++){
-            const month = new Date(tripsData[i].createdAt).getMonth();
-            localTrips[month] = localTrips[month]+1;
-            totalTrips = totalTrips+1;
+            if (new Date(tripsData[i].createdAt).getFullYear() === currentYear){
+                const month = new Date(tripsData[i].createdAt).getMonth();
+                localTrips[month] = localTrips[month]+1;
+            }
         }
 
         setTrips(localTrips);
-        setTripsTotal(totalTrips);
+        setTripsTotal(tripsData.length);
     }, [tripsData])
 
     useEffect(() => {
-        let totalBookings = 0;
-        const localBookings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const localBookings = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], currentYear = new Date().getFullYear();
 
         for (let i=0; i<bookingsData.length; i++){
-            const month = new Date(bookingsData[i].bookedAt).getMonth();
-            localBookings[month] = localBookings[month]+1;
-            totalBookings = totalBookings+1;
+            if (new Date(bookingsData[i].bookedAt).getFullYear() === currentYear){
+                const month = new Date(bookingsData[i].bookedAt).getMonth();
+                localBookings[month] = localBookings[month]+1;
+            }
         }
 
         setBookings(localBookings);
-        setBookingsTotal(totalBookings);
+        setBookingsTotal(bookingsData.length);
     }, [bookingsData])
 
     const fetchData = async () => {
@@ -137,7 +137,7 @@ const AdminDashboard = () => {
 
     return(
         <AdminLayout isLoading={isLoading}>
-            <div style={{width: '100%', display: "grid", gridTemplateColumns: '1fr 1fr', marginBottom: '2%', gridGap: '20px'}}>
+            <div style={{width: '100%', display: "grid", gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', marginBottom: '2%', gridGap: '20px'}}>
                 <MyCard>
                     <p className={style.statInfo} style={{fontSize: '0.9rem', padding: '2% 3%'}}>Users this year</p>
                     <MyAreaChart data={yearlyUsers} dataKey={'users'}/>
@@ -151,7 +151,7 @@ const AdminDashboard = () => {
                 </MyCard>
             </div>
 
-            <div style={{width: '100%', display: "grid", gridTemplateColumns: '1fr 1fr', marginBottom: '2%', gridGap: '20px'}}>
+            <div style={{width: '100%', display: "grid", gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', marginBottom: '2%', gridGap: '20px'}}>
                 <MyCard>
                     <div className={style.statCard} style={{justifyContent: "center", height: '100%'}}>
                         <p className={style.stat}>{tripsTotal}</p>
@@ -165,7 +165,7 @@ const AdminDashboard = () => {
                 </MyCard>
             </div>
 
-            <div style={{width: '100%', display: "grid", gridTemplateColumns: '1fr 1fr', marginBottom: '2%', gridGap: '20px'}}>
+            <div style={{width: '100%', display: "grid", gridTemplateColumns: window.innerWidth >= 768 ? '1fr 1fr' : '1fr', marginBottom: '2%', gridGap: '20px'}}>
                 <MyCard>
                     <p className={style.statInfo} style={{fontSize: '0.9rem', padding: '2% 3%'}}>Bookings this year</p>
                     <MyAreaChart data={yearlyBookings} dataKey={"bookings"}/>

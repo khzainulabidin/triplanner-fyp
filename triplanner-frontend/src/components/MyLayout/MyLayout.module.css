@@ -60,3 +60,50 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.mobileMenu{
+    display: none;
+}
+
+.closeIcon{
+    display: none;
+}
+
+@media all and (max-width: 768px) {
+    .menu{
+        display: none;
+    }
+
+    .content{
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .mobileMenu{
+        display: block;
+        width: 100%;
+        min-height: 100vh;
+        background: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        padding-top: 10%;
+    }
+
+    .closeIcon{
+        display: block;
+        position: absolute;
+        right: 2%;
+        top: 2%;
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 1.8rem;
+        cursor: pointer;
+        z-index: 9;
+    }
+
+    .dashboard{
+         grid-template-columns: 1fr;
+     }
+}

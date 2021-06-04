@@ -20,8 +20,15 @@ const SuggestRoomCard = ({room, hotel, selectRoom, id}) => {
     }
 
     useEffect(() => {
-        const photoUrl = hotel.roomGallery[Math.floor(Math.random()*hotel.roomGallery.length)];
-        setPhoto(`${process.env.REACT_APP_API_BASE_URL}/${photoUrl}`);
+        if (hotel.roomGallery.length > 0){
+            const photoUrl = hotel.roomGallery[Math.floor(Math.random()*hotel.roomGallery.length)];
+            setPhoto(`${process.env.REACT_APP_API_BASE_URL}/${photoUrl}`);
+        }
+        else {
+            const buildingIcons = [building, building1, building2];
+            setPhoto(buildingIcons[Math.floor(Math.random()*buildingIcons.length)]);
+        }
+
         fetchRating().catch(() => setRating(0));
         //eslint-disable-next-line
     }, []);

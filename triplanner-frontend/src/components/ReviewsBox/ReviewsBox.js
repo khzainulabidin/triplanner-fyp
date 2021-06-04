@@ -43,7 +43,7 @@ const ReviewsBox = ({itemId}) => {
                 ))}
             </div>
 
-            {reviews.length < 4 ? null : (
+            {reviews.length <= 4 ? null : (
                 <div className={styles.btnContainer}>
                     <SliderPrevButton
                         startingIndex={startingIndex}

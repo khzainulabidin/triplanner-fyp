@@ -48,10 +48,11 @@ const Dashboard = () => {
         }
 
         if (user){
-            let checkins=0, checkouts=0;
+            let checkins=0, checkouts=0, currentYear = new Date().getFullYear();
             for (let i=0; i<userBookings.length; i++){
                 const checkin = new Date(Number(userBookings[i].checkIn));
                 const checkout = new Date(Number(userBookings[i].checkOut));
+                const bookedAt = new Date(userBookings[i].bookedAt);
                 if (userBookings[i].status !== 'Expired' && userBookings[i].status !== 'Cancelled'){
                     if (checkin.getDate() === new Date().getDate()){
                         checkins = checkins+1;
@@ -61,7 +62,9 @@ const Dashboard = () => {
                         checkouts = checkouts+1;
                     }
                 }
-                localBookings[checkin.getMonth()] = localBookings[checkin.getMonth()]+1;
+                if (bookedAt.getFullYear() === currentYear){
+                    localBookings[checkin.getMonth()] = localBookings[checkin.getMonth()]+1;
+                }
             }
 
             let total=0, available=0;

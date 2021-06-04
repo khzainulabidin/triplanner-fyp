@@ -13,6 +13,7 @@ import {BUSINESS_BOOK_ROOM} from "../../../utils/routes";
 import ErrorPageLayout from "../../../components/ErrorPageLayout/ErrorPageLayout";
 import success_icon from '../../../assets/success.svg';
 import {formatDate} from "../../../utils/misc";
+import {Fade} from "react-reveal";
 
 const BookingPayment = () => {
     const params = useParams();
@@ -48,7 +49,7 @@ const BookingPayment = () => {
             setInput({
                 name: user.name,
                 email: user.email,
-                phone: '',
+                phone: user.phone,
                 guests: '',
                 city: hotel.city,
                 hotel: hotel.name,
@@ -111,7 +112,7 @@ const BookingPayment = () => {
             {isLoading ? null :
                 error ? <ErrorPageLayout text={error}/> :
                     success ? <ErrorPageLayout text={'Booking successful!'} icon={success_icon}/> :
-                        <div>
+                        <Fade><div>
                 <NavBar/>
                 <div className={styles.bookingPayment}>
                     <div className={styles.container}>
@@ -119,7 +120,7 @@ const BookingPayment = () => {
                             <p>Confirm your booking details</p>
                             <span className={styles.error}>{textError}</span>
                             <div className={styles.inputs}>
-                                <input type={'text'} placeholder={'Name'} disabled
+                                <input type={'text'} placeholder={'Name'}
                                        value={input.name} onChange={e => setInput({...input, name: e.target.value})}/>
                                 <div>
                                     <input type={'email'} placeholder={'Email'} disabled
@@ -180,9 +181,9 @@ const BookingPayment = () => {
                         </div>
                     </div>
                 </div>
-            </div>}
+            </div></Fade>}
         </Fragment>
     );
-}
+};
 
 export default BookingPayment;

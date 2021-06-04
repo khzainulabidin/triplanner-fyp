@@ -16,3 +16,14 @@
     text-transform: capitalize;
     margin: 30px 0;
 }
+
+@media all and (max-width: 768px) {
+    .exploreLanding_landingTitle{
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .exploreLanding{
+         height: 60vh;
+     }
+}

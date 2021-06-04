@@ -95,7 +95,7 @@ const TouristFriends = () => {
                             <h4>{searchedUser.username}</h4>
                         </div>
 
-                        <div className={styles.joinOptions}>
+                        <div className={styles.joinOptions} style={{marginTop: window.innerWidth < 768 ? '10%' : ''}}>
                             <Link to={`/profile/${searchedUser.username}`}>View</Link>
                         </div>
                     </div>
@@ -123,17 +123,17 @@ const TouristFriends = () => {
                         <MyCard>
                             <div className={styles.tripContainer}>
                                 <div className={styles.tripDesc}>
-                                    <h4>{friend.username}</h4>
+                                    <h4 className={styles.friendUsername}>{friend.username}</h4>
                                 </div>
 
                                 {mode === 'friends' && <div className={styles.joinOptions}>
-                                    <p onClick={() => updateFriend(friend.username, 'Removed', setIsLoading)}>Remove</p>
+                                    <p className={styles.pLink} onClick={() => updateFriend(friend.username, 'Removed', setIsLoading)}>Remove</p>
                                     <Link to={`/profile/${friend.username}`}>View</Link>
                                 </div>}
 
                                 {mode === 'requests' && <div className={styles.joinOptions}>
-                                    <p onClick={() => updateFriend(friend.username, 'Accepted', setIsLoading)}>Accept</p>
-                                    <p onClick={() => updateFriend(friend.username, 'Declined', setIsLoading)}>Decline</p>
+                                    <p className={styles.pLink} onClick={() => updateFriend(friend.username, 'Accepted', setIsLoading)}>Accept</p>
+                                    <p className={styles.pLink} onClick={() => updateFriend(friend.username, 'Declined', setIsLoading)}>Decline</p>
                                     <Link to={`/profile/${friend.username}`}>View</Link>
                                 </div>}
                             </div>

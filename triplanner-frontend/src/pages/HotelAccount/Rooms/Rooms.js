@@ -82,14 +82,15 @@ const Rooms = () => {
             {isLoading ? null : user ? (
                 <Fragment>
                     {error && <Fade><p className={style.error}>{error}</p></Fade>}
-                    {rooms.map((room, index) => (
-                        <RoomCard room={room} key={index} deleteRoom={deleteRoom} popError={popError}/>
-                    ))}
 
                     <div className={style.card} onClick={() => setOpen(true)}>
                         <AddIcon fontSize={'large'}/>
                         <p>Add Rooms</p>
                     </div>
+
+                    {rooms.map((room, index) => (
+                        <RoomCard room={room} key={index} deleteRoom={deleteRoom} popError={popError}/>
+                    ))}
 
                     <AddRoomModal open={open} setOpen={setOpen} availableTypes={availableTypes} addRoom={addRoom}/>
                 </Fragment>) : <Fade><div className={'noUserContainer'}><NoUserWindow/></div></Fade>}
