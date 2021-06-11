@@ -3,7 +3,7 @@ import {useHistory, useParams} from "react-router-dom";
 import React, {useEffect, useState, Fragment, useRef} from "react";
 import {getMe} from "../../../../utils/auth";
 import axios from "axios";
-import {BUSINESS_BOOKING, TRIPS_ROUTE, UPDATE_JOIN_REQUEST} from "../../../../utils/routes";
+import {BOOKINGS_ROUTE, BUSINESS_BOOKING, TRIPS_ROUTE, UPDATE_JOIN_REQUEST} from "../../../../utils/routes";
 import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner";
 import ErrorPageLayout from "../../../../components/ErrorPageLayout/ErrorPageLayout";
 import {useReactToPrint} from "react-to-print";
@@ -18,6 +18,7 @@ import TPBudget from "./TPBudget/TPBudget";
 import TPPrivacy from "./TPPrivacy/TPPrivacy";
 import TPTimings from "./TPTimings/TPTimings";
 import {Fade} from "react-reveal";
+import {refundPayment} from "../../../../utils/misc";
 
 const TripPlan = () => {
     const [user, setUser] = useState({});
@@ -67,6 +68,22 @@ const TripPlan = () => {
     const cancelBooking = async (bookingId, hotelId) => {
         try {
             setIsLoading(true);
+            const bookingRes = await axios.get(`${BOOKINGS_ROUTE}/${bookingId}`, {headers: {'x-access-token': localStorage.getItem('token')}});
+            const bookingData = bookingRes.data;
+            if (!bookingData.success){
+                setIsLoading(false);
+                return setError('Unable to cancel booking at this time. Try reloading the page.');
+            }
+
+            const fetchedBooking = bookingData.data;
+            if (fetchedBooking.paymentMethod === 'Online Payment'){
+                const isRefunded = await refundPayment(fetchedBooking._id, fetchedBooking.paymentDetails.id, fetchedBooking.payment);
+                if (!isRefunded){
+                    setIsLoading(false);
+                    return setError('Unable to refund payment at this time. Try reloading the page.');
+                }
+            }
+
             const res = await axios.put(BUSINESS_BOOKING, {id: bookingId, statusUpdate: 'Cancelled', hotelId}, {headers: {'x-access-token': localStorage.getItem('token')}});
             const data = res.data;
             if (!data.success){
@@ -190,7 +207,7 @@ const TripPlan = () => {
 
                     {trip.selectedRooms.length > 0 && trip.bookings.length > 0 && <Fade>
                         <h1 className={styles.cardTitle}>Bookings</h1>
-                        <TPBookings trip={trip} user={user} cancelBooking={cancelBooking}/>
+                        <TPBookings trip={trip}/>
                     </Fade>}
 
                     <Fade>

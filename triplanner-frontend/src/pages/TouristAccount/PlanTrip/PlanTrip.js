@@ -31,6 +31,7 @@ const PlanTrip = () => {
         suggestedPlacesToVisit: [],
         selectedRooms: [],
         privacy: 'private',
+        paymentDetails: {},
     });
 
     const clickNext = () => {
@@ -45,6 +46,10 @@ const PlanTrip = () => {
         }
     }
 
+    const skipAll = () => {
+        setProgress(100);
+    }
+
     let content;
     if (progress === 20){
         content = <PTSourceDept progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
@@ -56,19 +61,19 @@ const PlanTrip = () => {
         content = <PTBudget progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 50){
-        content = <PTStaysGuests progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
+        content = <PTStaysGuests progress={progress} action={clickNext} skipAll={skipAll} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 60){
-        content = <PTAddUsers progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
+        content = <PTAddUsers progress={progress} action={clickNext} skipAll={skipAll} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 70){
-        content = <PTAddHobbies progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
+        content = <PTAddHobbies progress={progress} action={clickNext} skipAll={skipAll} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 80){
-        content = <PTAddPlaces progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
+        content = <PTAddPlaces progress={progress} action={clickNext} skipAll={skipAll} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 90){
-        content = <PTAddHotels progress={progress} action={clickNext} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
+        content = <PTAddHotels progress={progress} action={clickNext} skipAll={skipAll} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>
     }
     else if (progress === 100){
         content = <PTFinish progress={progress} inputs={inputs} setInputs={setInputs} clickBack={clickBack}/>

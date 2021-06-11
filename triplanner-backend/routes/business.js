@@ -10,7 +10,9 @@ const {
     updateMessaging,
     checkoutBooking,
     getBusinessesByLocation,
-    bookRoom
+    bookRoom,
+    updateCoa,
+    updatePaymentAccount
 } = require('../controllers/business');
 
 router.put('/profile', protect, updateProfile);
@@ -22,5 +24,7 @@ router.put('/booking', protect, checkoutBooking);
 router.post('/deleteGalleryPhoto', protect, deleteGalleryPhoto);
 router.get('/businessesByLocation/:location', getBusinessesByLocation);
 router.post('/bookRoom', protect, bookRoom);
+router.put('/coa', protect, updateCoa);
+router.put('/paymentAccount', protect, updatePaymentAccount);
 
 module.exports = router;

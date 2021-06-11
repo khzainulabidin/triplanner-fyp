@@ -10,6 +10,7 @@ import {BUSINESS_MESSAGING, MESSAGES_ROUTE} from "../../../utils/routes";
 import MyCard from "../../../components/MyCard/MyCard";
 import MessageModal from "../../../components/MessageModal/MessageModal";
 import {Fade} from "react-reveal";
+import {formatDate} from "../../../utils/misc";
 
 const Messages = () => {
     const [messaging, setMessaging] = useState(false);
@@ -55,13 +56,12 @@ const Messages = () => {
         const localRows = [];
         for(let i=0; i<messages.length; i++){
             const message = messages[i];
-            const date = new Date(message.receivedAt);
             localRows.push(createData(
                 message.name,
                 message.email,
                 message.phone,
-                (<MessageModal email={message.email} message={message.message}/>),
-                `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                (<MessageModal email={message.email} message={message.message} id={message._id} replies={message.replies}/>),
+                formatDate(new Date(message.receivedAt).getTime()),
             ));
         }
         setRows(localRows);
@@ -95,7 +95,12 @@ const Messages = () => {
                 <Fragment>
                     <Fade>
                         <div style={{width: '100%'}}>
-                            <MessagingFeature messaging={messaging} setMessaging={updateMessaging}/>
+                            <MessagingFeature
+                                messaging={messaging}
+                                setMessaging={updateMessaging}
+                                title={'Messaging'}
+                                desc={'You can boost your sales by enabling messaging feature and answering your customer\'s queries right away.'}
+                            />
 
                             {messaging ? messages.length > 0 ? (
                                 <Fragment>

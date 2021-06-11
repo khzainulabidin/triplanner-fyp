@@ -7,6 +7,7 @@ import PoolIcon from "@material-ui/icons/Pool";
 import ChatIcon from "@material-ui/icons/Chat";
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import MyLayout from "../MyLayout/MyLayout";
 
 const BusinessLayout = ({isLoading, children}) => {
@@ -20,6 +21,7 @@ const BusinessLayout = ({isLoading, children}) => {
                     <NavLink route={'/business/dashboard'}><HomeIcon className={'menuIcon'}/> Home</NavLink>
                     <NavLink route={'/business/profile'}><PersonIcon className={'menuIcon'}/> Profile</NavLink>
                     <NavLink route={'/business/bookings'}><AssignmentTurnedInIcon className={'menuIcon'}/> Bookings</NavLink>
+                    <NavLink route={'/business/payments'}><LocalAtmIcon className={'menuIcon'}/> Payments</NavLink>
                     <NavLink route={'/business/messages'}><ChatIcon className={'menuIcon'}/> Messages</NavLink>
                     <NavLink route={'/business/rooms'}><MeetingRoomIcon className={'menuIcon'}/> Rooms</NavLink>
                     <NavLink route={'/business/gallery'}><PhotoLibraryIcon className={'menuIcon'}/> Gallery</NavLink>

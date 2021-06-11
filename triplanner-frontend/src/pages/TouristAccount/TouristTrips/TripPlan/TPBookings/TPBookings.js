@@ -2,7 +2,7 @@ import {Fragment} from "react";
 import TPCard from "../TPCard/TPCard";
 import styles from "../TripPlan.module.css";
 
-const TPBookings = ({user, trip, cancelBooking}) => {
+const TPBookings = ({trip}) => {
 
     return(
         <Fragment>
@@ -16,14 +16,6 @@ const TPBookings = ({user, trip, cancelBooking}) => {
                     <div className={styles.bookingInfo}>
                         <h3>{room.hotel.name}</h3>
                         <p className={styles.roomDesc}><span style={{textTransform: 'capitalize'}}>{room.room.type}</span> Room - {room.hotel.city}</p>
-                        <p className={styles.bookingStatus}>Status: Booking {trip.bookings[index].status}</p>
-                    </div>
-
-                    <div>
-                        {user && trip && user.userId === trip.userId && trip.bookings[index].status === 'Confirmed' ?
-                            <p className={styles.cancelBooking} onClick={() => cancelBooking(trip.bookings[index]._id, room.hotel.userId)}>
-                                Cancel booking
-                            </p> : null}
                     </div>
                 </TPCard>
             ))}

@@ -2,7 +2,6 @@
     height: 90vh;
     margin-top: 3px;
     background: var(--text-light);
-    margin-bottom: 60%;
 }
 
 .placeJumbotron_overlay{
@@ -56,6 +55,10 @@
 }
 
 @media all and (max-width: 768px) {
+    .placeJumbotron{
+        margin-bottom: 60%;
+    }
+
     .placeJumbotron_box{
         grid-template-columns: 1fr;
     }

@@ -1,4 +1,58 @@
 const Booking = require('../models/Booking');
+const stripe = require("stripe")("sk_test_51J0lIlKPY5YHguOZze9bXQPEFDnxPOWiF2GfSyHrSHw7ziDTnK6palsWSRLf6umwEticSOCLLRT1eeCEiKiKjRig00bKKXx7Tg");
+
+exports.createPaymentIntent = async (req, res) => {
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: req.body.paymentTotal,
+            currency: "pkr"
+        });
+
+        res.send({
+            success: true,
+            data: paymentIntent.client_secret
+        });
+    }
+    catch (e){
+        res.send({
+            success: false,
+            data: 'Unable to create payment intent'
+        });
+    }
+}
+
+exports.refundPayment = async (req, res) => {
+    try {
+        const refund = await stripe.refunds.create({
+            payment_intent: req.body.paymentId,
+            amount: req.body.amount
+        });
+
+        if (refund.status !== 'succeeded'){
+            return res.send({
+                success: false,
+                data: 'Unable to refund payment'
+            });
+        }
+
+        await Booking.findOneAndUpdate(
+            {_id: req.body.bookingId},
+            {refund},
+            {new: true, runValidators: true}
+        );
+
+        res.send({
+            success: true,
+            data: refund
+        });
+    }
+    catch (e){
+        res.send({
+            success: false,
+            data: 'Unable to refund payment'
+        });
+    }
+}
 
 exports.getBookings = async (req, res) => {
     try {
@@ -69,5 +123,27 @@ exports.deleteBooking = async (req, res) => {
             data: 'Unable to delete booking'
         })
     }
+}
 
+exports.getBooking = async (req, res) => {
+    try {
+        const booking = await Booking.findOne({_id: req.params.id});
+        if (!booking){
+            return res.send({
+                success: false,
+                data: 'No booking found'
+            });
+        }
+
+        res.send({
+            success: true,
+            data: booking
+        });
+    }
+    catch (e){
+        res.send({
+            success: false,
+            data: 'No booking found'
+        });
+    }
 }

@@ -8,6 +8,7 @@ const MessageSchema = new mongoose.Schema({
     hotelId: String,
     senderId: String,
     hotelName: String,
+    replies: Array,
     receivedAt: {
         type: Date,
         default: Date.now

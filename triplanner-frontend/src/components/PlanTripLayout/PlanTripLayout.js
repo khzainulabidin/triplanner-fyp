@@ -7,9 +7,10 @@ import { LinearProgress } from '@material-ui/core';
 import {Fade} from "react-reveal";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 import PTSummary from "../PTSummary/PTSummary";
 
-const PlanTripLayout = ({actionText, action, title, description, progress, clickBack, actionDisabled, error, setError, skippable, skipAction, inputs, children}) => {
+const PlanTripLayout = ({actionText, action, title, description, progress, clickBack, actionDisabled, error, setError, skipAll, skippable, skipAction, inputs, children}) => {
     const [closeModalOpen, setCloseModalOpen] = useState(false);
     const [openSummary, setOpenSummary] = useState(false);
 
@@ -24,10 +25,17 @@ const PlanTripLayout = ({actionText, action, title, description, progress, click
         <Fade>
             <div className={styles.planTripLayout}>
                 <Fragment>
-                    <LinearProgress value={progress} valueBuffer={100-progress} color={'secondary'} variant={'buffer'}/>
-                    <CloseIcon className={styles.closeIcon} onClick={() => setCloseModalOpen(true)}/>
+                    <LinearProgress
+                        value={progress}
+                        valueBuffer={100-progress}
+                        color={'secondary'}
+                        variant={'buffer'}
+                        style={{height: window.innerWidth >= 768 ? '20px' : '10px'}}
+                    />
+                    {progress !== 100 && <CloseIcon className={styles.closeIcon} onClick={() => setCloseModalOpen(true)}/>}
                     {progress > 10 && <ArrowBackIcon className={styles.backIcon} onClick={clickBack}/>}
-                    {progress > 20 && inputs && <FormatListBulletedIcon className={[styles.closeIcon, styles.summaryIcon].join(' ')} onClick={() => setOpenSummary(true)}/>}
+                    {progress > 20 && inputs && <span title={'Trip summary'}><FormatListBulletedIcon className={[styles.closeIcon, styles.summaryIcon].join(' ')} onClick={() => setOpenSummary(true)}/></span>}
+                    {skippable && <span title={'Skip All'}><SkipNextIcon className={[styles.closeIcon, styles.skipAllIcon].join(' ')} onClick={skipAll}/></span>}
 
                     <MyModal open={closeModalOpen} setOpen={setCloseModalOpen} actionText={'Discard plan'} action={discardPlan}>
                         <h4 className={styles.modalHeading}>Are you sure want to cancel?</h4>

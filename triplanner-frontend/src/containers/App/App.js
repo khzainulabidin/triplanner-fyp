@@ -44,6 +44,7 @@ import AdminUsers from "../../pages/AdminAccount/AdminUsers/AdminUsers";
 import AdminBookings from "../../pages/AdminAccount/AdminBookings/AdminBookings";
 import AdminTrips from "../../pages/AdminAccount/AdminTrips/AdminTrips";
 import DiscussionGroup from "../../pages/TouristAccount/DiscussionGroup/DiscussionGroup";
+import Payments from "../../pages/HotelAccount/Payments/Payments";
 
 const App = () => {
     return(
@@ -68,6 +69,7 @@ const App = () => {
                         <ProtectedRoute path={'/business/dashboard'} exact component={Dashboard} type={'business'}/>
                         <ProtectedRoute path={'/business/profile'} exact component={Profile} type={'business'}/>
                         <ProtectedRoute path={'/business/bookings'} exact component={Bookings} type={'business'}/>
+                        <ProtectedRoute path={'/business/payments'} exact component={Payments} type={'business'}/>
                         <ProtectedRoute path={'/business/rooms'} exact component={Rooms} type={'business'}/>
                         <ProtectedRoute path={'/business/gallery'} exact component={Gallery} type={'business'}/>
                         <ProtectedRoute path={'/business/facilities'} exact component={Facilities} type={'business'}/>
@@ -78,7 +80,7 @@ const App = () => {
                         <ProtectedRoute path={'/createProfile'} exact component={TouristCreateProfile} type={'tourist'}/>
                         <ProtectedRoute path={'/createProfile/:edit'} exact component={TouristCreateProfile} type={'tourist'}/>
                         <ProtectedRoute path={'/account/interests'} exact component={CreateAccountInterests} type={'tourist'}/>
-                        <ProtectedRoute path={'/bookingPayment/:type/:checkIn/:checkOut/:hotelId'} exact component={BookingPayment} type={'tourist'}/>
+                        <ProtectedRoute path={'/bookingPayment/:type/:coa/:checkIn/:checkOut/:hotelId'} exact component={BookingPayment} type={'tourist'}/>
                         <ProtectedRoute path={'/dashboard'} exact component={TouristDashboard} type={'tourist'}/>
                         <ProtectedRoute path={'/profile/:username'} exact component={TouristProfile} type={'tourist'}/>
                         <ProtectedRoute path={'/profile'} exact component={TouristProfile} type={'tourist'}/>

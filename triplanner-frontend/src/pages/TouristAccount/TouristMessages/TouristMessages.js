@@ -7,19 +7,36 @@ import {MESSAGES_ROUTE} from "../../../utils/routes";
 import MyCard from "../../../components/MyCard/MyCard";
 import MessageModal from "../../../components/MessageModal/MessageModal";
 import TouristLayout from "../../../components/TouristLayout/TouristLayout";
+import {formatDate} from "../../../utils/misc";
 
 const TouristMessages = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [messages, setMessages] = useState([]);
     const [rows, setRows] = useState([]);
 
-    function createData(name, message, sentAt) {
-        return {name, message, sentAt};
+    const deleteMessage = async id => {
+        try {
+            setIsLoading(true);
+            const res = await axios.delete(`${MESSAGES_ROUTE}/${id}`, {headers: {'x-access-token': localStorage.getItem('token')}});
+            const data = res.data;
+            setIsLoading(false);
+            if (data.success){
+                window.location.reload();
+            }
+        }
+        catch (e){
+            setIsLoading(false);
+        }
+    }
+
+    function createData(name, message, deleteMessage, sentAt) {
+        return {name, message, deleteMessage, sentAt};
     }
 
     const headCells = [
         { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
         { id: 'message', numeric: true, disablePadding: false, label: 'Message' },
+        { id: 'deleteMessage', numeric: true, disablePadding: false, label: 'Delete' },
         { id: 'sentAt', numeric: true, disablePadding: false, label: 'Sent At' },
     ];
 
@@ -32,11 +49,11 @@ const TouristMessages = () => {
         const localRows = [];
         for(let i=0; i<messages.length; i++){
             const message = messages[i];
-            const date = new Date(message.receivedAt);
             localRows.push(createData(
                 message.hotelName,
-                (<MessageModal message={message.message} id={message._id}/>),
-                `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                (<MessageModal message={message.message} id={message._id} replies={message.replies}/>),
+                (<p onClick={() => deleteMessage(message._id)} style={{color: '#04B6A9', cursor: "pointer"}}>Delete</p>),
+                formatDate(new Date(message.receivedAt)),
             ));
         }
         setRows(localRows);

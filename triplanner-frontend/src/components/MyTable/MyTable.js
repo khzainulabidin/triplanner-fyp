@@ -18,6 +18,7 @@ import {Fade} from "react-reveal";
 import AdminUsersTable from "./AdminUsersTable";
 import AdminBookingsTable from "./AdminBookingsTable";
 import AdminTripsTable from "./AdminTripsTable";
+import PaymentsTable from "./PaymentsTable";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -155,6 +156,9 @@ const MyTable = ({rows, headCells, type}) => {
         }
         else if (type === 'adminTrips'){
             content = <AdminTripsTable row={row} labelId={labelId}/>;
+        }
+        else if (type === 'payments'){
+            content = <PaymentsTable row={row} labelId={labelId}/>;
         }
 
         return content;

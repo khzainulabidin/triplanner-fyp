@@ -22,6 +22,8 @@ export const BUSINESS_BOOKING = `${process.env.REACT_APP_API_BASE_URL}/business/
 export const BUSINESS_DELETE_GALLERY_PHOTO = `${process.env.REACT_APP_API_BASE_URL}/business/deleteGalleryPhoto`;
 export const GET_BUSINESSES_BY_LOCATION = `${process.env.REACT_APP_API_BASE_URL}/business/businessesByLocation`;
 export const BUSINESS_BOOK_ROOM = `${process.env.REACT_APP_API_BASE_URL}/business/bookRoom`;
+export const BUSINESS_COA = `${process.env.REACT_APP_API_BASE_URL}/business/coa`;
+export const BUSINESS_PAYMENT_ACCOUNT = `${process.env.REACT_APP_API_BASE_URL}/business/paymentAccount`;
 
 export const TOURIST_INTERESTS = `${process.env.REACT_APP_API_BASE_URL}/tourist/interests`;
 export const TOURIST_PROFILE = `${process.env.REACT_APP_API_BASE_URL}/tourist/profile`;
@@ -40,8 +42,11 @@ export const REVIEWS_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/review`;
 export const RATING_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/review/rating`;
 
 export const BOOKINGS_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/booking`;
+export const CREATE_PAYMENT_INTENT = `${process.env.REACT_APP_API_BASE_URL}/booking/createPaymentIntent`;
+export const REFUND_PAYMENT = `${process.env.REACT_APP_API_BASE_URL}/booking/refund`;
 
 export const MESSAGES_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/message`;
+export const MESSAGES_REPLY_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/message/reply`;
 
 export const TRIPS_ROUTE = `${process.env.REACT_APP_API_BASE_URL}/trip`;
 export const GET_OTHER_TRIPS = `${process.env.REACT_APP_API_BASE_URL}/trip/getOtherTrip`;

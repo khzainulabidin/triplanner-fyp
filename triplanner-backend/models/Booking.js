@@ -15,6 +15,8 @@ const BookingSchema = new mongoose.Schema({
     hotel: String,
     paymentMethod: String,
     payment: String,
+    paymentDetails: Object,
+    refund: Object,
     bookedAt: {
         type: Date,
         default: Date.now

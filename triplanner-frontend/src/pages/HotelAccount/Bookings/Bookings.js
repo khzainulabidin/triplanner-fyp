@@ -52,7 +52,7 @@ const Bookings = () => {
 
         for(let i=0; i<bookings.length; i++){
             const booking = bookings[i];
-            if ((moment(Number(booking.checkOut)).diff(moment(Number(booking.checkIn)), 'days')) < 0 && booking.status === 'Confirmed'){
+            if ((moment(Number(booking.checkIn)).diff(moment(new Date().getTime()), 'days')) < 0 && booking.status === 'Confirmed'){
                 booking.status = 'Awaiting Checkout';
             }
             localRows.push(createData(

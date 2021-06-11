@@ -3,7 +3,7 @@ import PlanTripLayout from "../../../../components/PlanTripLayout/PlanTripLayout
 import CheckBox from "../../../../components/CheckBox/CheckBox";
 import styles from '../../../../components/PlanTripLayout/PlanTripLayout.module.css';
 
-const PTStaysGuests = ({progress, action, inputs, setInputs, clickBack}) => {
+const PTStaysGuests = ({progress, action, inputs, setInputs, clickBack, skipAll}) => {
     const [error, setError] = useState('');
 
     const isChecked = id => {
@@ -33,8 +33,9 @@ const PTStaysGuests = ({progress, action, inputs, setInputs, clickBack}) => {
             description={"Provide the number of people that will accompany you and select the places where you have plans to stay in the hotel"}
             skippable={true}
             skipAction={action}
+            skipAll={skipAll}
             inputs={inputs}
-            actionDisabled={inputs.numberOfGuests !== '' && (Number(inputs.numberOfGuests) < 0 || Number(inputs.numberOfGuests) > 10)}
+            actionDisabled={inputs.numberOfGuests !== '' && (Number(inputs.numberOfGuests) < 0 || Number(inputs.numberOfGuests) > 50)}
         >
 
             <div className={'PTGridContainer'} style={{marginBottom: '3%'}}>

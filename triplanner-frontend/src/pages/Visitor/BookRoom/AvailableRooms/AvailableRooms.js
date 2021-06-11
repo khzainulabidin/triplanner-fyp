@@ -19,6 +19,7 @@ import {getOtherProfile} from "../../../../utils/auth";
 import axios from "axios";
 import {RATING_ROUTE} from "../../../../utils/routes";
 import {Fade} from 'react-reveal';
+import MyCard from "../../../../components/MyCard/MyCard";
 
 const AvailableRooms = () => {
     const [cover, setCover] = useState('');
@@ -106,6 +107,8 @@ const AvailableRooms = () => {
                 </div>
 
                 <div className={styles.content}>
+                    {profile.coaEnabled && <MyCard><p>Cash on arrival option is available</p></MyCard>}
+
                     {profile && profile.facilities && <MyAccordion
                         heading={'Facilities'}
                         content={
@@ -138,7 +141,7 @@ const AvailableRooms = () => {
                             <div className={styles.rooms}>
                                 {profile.rooms.filter(room => room.number_of_rooms > 0).map((room, index) => (
                                     <RoomCard key={index} room={room} readOnly={true}
-                                              selectRoomLink={`/bookingPayment/${room.type}/${checkIn}/${checkOut}/${hotelId}`}/>
+                                              selectRoomLink={`/bookingPayment/${room.type}/${profile.coaEnabled ? 1 : 0}/${checkIn}/${checkOut}/${hotelId}`}/>
                                 ))}
                             </div> : <span>All rooms are occupied at this moment</span>}
                     </Fragment>}

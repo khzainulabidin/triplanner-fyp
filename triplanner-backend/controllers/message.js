@@ -53,3 +53,31 @@ exports.deleteMessage = async (req, res) => {
         });
     }
 }
+
+exports.sendReply = async (req, res) => {
+    try {
+        const reply = await Message.findOneAndUpdate(
+            {_id: req.body.id},
+            {$push: {replies: {text: req.body.reply, sentAt: Date.now()}}},
+            {new: true, runValidators: true}
+        );
+
+        if (!reply){
+            return res.send({
+                success: false,
+                data: 'Unable to send reply'
+            });
+        }
+
+        res.send({
+            success: true,
+            data: reply
+        });
+    }
+    catch (e){
+        res.send({
+            success: false,
+            data: 'Unable to send reply'
+        });
+    }
+}

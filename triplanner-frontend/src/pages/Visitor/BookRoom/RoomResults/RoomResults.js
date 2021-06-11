@@ -139,9 +139,9 @@ const RoomResults = () => {
                                 <h4>Sort By</h4>
                                 <div className={styles.maxBudget}>
                                     <select value={sortType} onChange={e => updateSort(e.target.value)}>
-                                        <option value={'rating'}>Best rating</option>
-                                        <option value={'priceLTH'}>Price low to high</option>
-                                        <option value={'priceHTL'}>Price high to low</option>
+                                            <option value={'rating'}>Best rating</option>
+                                            <option value={'priceLTH'}>Price low to high</option>
+                                            <option value={'priceHTL'}>Price high to low</option>
                                     </select>
                                 </div>
                             </div>
@@ -217,6 +217,6 @@ const RoomResults = () => {
             </Fade>}
         </Fragment>
     );
-}
+};
 
 export default RoomResults;

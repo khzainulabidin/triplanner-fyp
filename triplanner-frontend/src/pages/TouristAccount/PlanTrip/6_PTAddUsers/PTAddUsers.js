@@ -5,7 +5,7 @@ import FindUsers from "../../../../components/FindUsers/FindUsers";
 import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner";
 import {Chip} from "@material-ui/core";
 
-const PTAddUsers = ({progress, action, inputs, setInputs, clickBack}) => {
+const PTAddUsers = ({progress, action, inputs, setInputs, clickBack, skipAll}) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [friends, setFriends] = useState([]);
@@ -62,6 +62,7 @@ const PTAddUsers = ({progress, action, inputs, setInputs, clickBack}) => {
                 clickBack={clickBack}
                 skippable={true}
                 skipAction={action}
+                skipAll={skipAll}
                 inputs={inputs}
                 description={"You can add your TriPlanner friends in your trip plan"}
             >

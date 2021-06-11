@@ -8,7 +8,7 @@ import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissa
 import {v4 as uuid} from 'uuid';
 import shuffle from "shuffle-array";
 
-const PTAddPlaces = ({progress, action, inputs, setInputs, clickBack}) => {
+const PTAddPlaces = ({progress, action, inputs, setInputs, clickBack, skipAll}) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [places, setPlaces] = useState([]);
@@ -63,6 +63,7 @@ const PTAddPlaces = ({progress, action, inputs, setInputs, clickBack}) => {
                 actionText={'Next'}
                 clickBack={clickBack}
                 skippable={true}
+                skipAll={skipAll}
                 inputs={inputs}
                 skipAction={action}
                 description={"These popular places will come in between your source and destination. You have an opportunity to visit them without making much extra effort"}

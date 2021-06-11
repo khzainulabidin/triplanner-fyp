@@ -34,15 +34,16 @@ const PTFinish = ({progress, inputs, setInputs, clickBack}) => {
                         name: user.name,
                         email: user.email,
                         phone: user.phone,
-                        guests: Number(inputs.numberOfGuests),
+                        guests: Number(inputs.numberOfGuests) < 1 ? 1 : Number(inputs.numberOfGuests),
                         city: room.hotel.city,
                         hotel: room.hotel.name,
                         checkIn: Number(checkinTime),
                         checkOut: Number(checkoutTime),
                         roomType: room.room.type,
                         status: 'Confirmed',
-                        paymentMethod: 'Cash on arrival',
+                        paymentMethod: 'Online Payment',
                         payment: Number(room.room.price),
+                        paymentDetails: inputs.paymentDetails
                     }
 
                     const bookingRes = await axios.post(BUSINESS_BOOK_ROOM, {booking: bookingDetails, hotelId: room.hotel.userId}, {headers: {'x-access-token': localStorage.getItem('token')}});

@@ -16,7 +16,7 @@ const TPUsers = ({trip, user, cancelRequest}) => {
                     </div>
 
                     <div>
-                        {user && trip && user.userId === trip.userId && request.status === 'Pending' ?
+                        {user && trip && user.userId === trip.userId && request.status === 'Pending' && trip.departureTime > new Date().getTime() ?
                             <p className={styles.cancelBooking} onClick={() => cancelRequest(request.username)}>Cancel request</p> :
                             null}
                     </div>

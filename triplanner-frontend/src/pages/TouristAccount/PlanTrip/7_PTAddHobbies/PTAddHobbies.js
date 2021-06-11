@@ -7,7 +7,7 @@ import {Chip} from "@material-ui/core";
 import axios from "axios";
 import {TOURIST_INTERESTS} from "../../../../utils/routes";
 
-const PTAddHobbies = ({progress, action, inputs, setInputs, clickBack}) => {
+const PTAddHobbies = ({progress, action, inputs, setInputs, clickBack, skipAll}) => {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [interest, setInterest] = useState('');
@@ -57,6 +57,7 @@ const PTAddHobbies = ({progress, action, inputs, setInputs, clickBack}) => {
                 skippable={true}
                 inputs={inputs}
                 skipAction={action}
+                skipAll={skipAll}
                 description={"We'll suggest you places based on your hobbies. If you skip it, we'll still suggest you the popular places along your route"}
             >
                 {isLoading ? null : (

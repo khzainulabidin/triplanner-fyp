@@ -131,6 +131,14 @@ exports.updateMessaging = async (req, res) => {
     await updateBusiness(req, res, {messaging: req.body.messaging}, 'Messaging');
 }
 
+exports.updateCoa = async (req, res) => {
+    await updateBusiness(req, res, {coaEnabled: req.body.coaEnabled}, 'Messaging');
+}
+
+exports.updatePaymentAccount = async (req, res) => {
+    await updateBusiness(req, res, {paymentAccount: req.body.paymentAccount}, 'Messaging');
+}
+
 exports.checkoutBooking = async (req, res) => {
     const booking = await Booking.findOneAndUpdate(
         {_id: req.body.id},

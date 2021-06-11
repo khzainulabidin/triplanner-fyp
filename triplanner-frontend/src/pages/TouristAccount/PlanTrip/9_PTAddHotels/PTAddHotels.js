@@ -3,21 +3,38 @@ import LoadingSpinner from "../../../../components/LoadingSpinner/LoadingSpinner
 import PlanTripLayout from "../../../../components/PlanTripLayout/PlanTripLayout";
 import axios from "axios";
 import {GET_BUSINESSES_BY_LOCATION} from "../../../../utils/routes";
-import {bestOption, getRating} from "../../../../utils/misc";
+import {bestOption, createClientSecret, getRating, processPayment} from "../../../../utils/misc";
 import SentimentVeryDissatisfiedIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 import SuggestRoomCard from "../../../../components/SuggestRoomCard/SuggestRoomCard";
 import CloseIcon from "@material-ui/icons/Close";
 import {v4 as uuid} from 'uuid';
+import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 
-const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
+const PTAddHotels = ({progress, action, inputs, setInputs, clickBack, skipAll}) => {
     const [error, setError] = useState('');
     const [textError, setTextError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [hotels, setHotels] = useState([]);
     const [selectedRooms, setSelectedRooms] = useState([]);
+    const [payment, setPayment] = useState(0);
+    const [processingPayment, setProcessingPayment] = useState(false);
 
-    const handleNext = () => {
-        setInputs({...inputs, selectedRooms});
+    const stripe = useStripe();
+    const elements = useElements();
+
+    const handleNext = async () => {
+        setProcessingPayment(true);
+        const clientSecretData = await createClientSecret(payment);
+        setProcessingPayment(false);
+        if (!clientSecretData){
+            return setError('Unable to book room at this time. Try reloading the page');
+        }
+        const paymentDetails = await processPayment(setProcessingPayment, clientSecretData, stripe, elements);
+        if (!paymentDetails){
+            return setError('Payment failed. Please try again');
+        }
+
+        setInputs({...inputs, selectedRooms, paymentDetails});
         action();
     }
 
@@ -72,6 +89,14 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
         //eslint-disable-next-line
     }, []);
 
+    useEffect(() => {
+        let localPayment = 0;
+        for (let i=0; i<selectedRooms.length; i++){
+            localPayment = localPayment + Number(selectedRooms[i].room.price);
+        }
+        setPayment(localPayment);
+    }, [selectedRooms])
+
     return(
         <Fragment>
             <LoadingSpinner isLoading={isLoading}/>
@@ -83,9 +108,11 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
                 action={handleNext}
                 actionText={'Next'}
                 clickBack={clickBack}
+                skipAll={skipAll}
                 inputs={inputs}
-                skippable={true}
+                skippable={selectedRooms.length < 1}
                 skipAction={action}
+                actionDisabled={processingPayment}
                 description={"We suggest you the best hotels based on your budget. However right now this booking process supports one day booking. If you have plans to stay for more than one day then you must book room separately after creating this trip plan"}
             >
                 {isLoading ? null : hotels.length > 0 ?
@@ -96,6 +123,14 @@ const PTAddHotels = ({progress, action, inputs, setInputs, clickBack}) => {
                                 <p style={{fontWeight: '600'}}><span style={{textTransform: 'capitalize'}}>{room.room.type}</span> Room in {room.hotel.name} for PKR {room.room.price}</p>
                             </div>
                         ))}
+
+                        {selectedRooms.length > 0 && <Fragment>
+                            <p style={{margin: '2% 0', fontSize: '1rem'}}>Total payment: <span
+                                style={{fontWeight: 'bold'}}>PKR {payment}</span></p>
+                            <div className={'cardElement'}>
+                                <CardElement/>
+                            </div>
+                        </Fragment>}
 
                         <p style={{background: '#04B6A9', marginBottom: '2%', margin: window.innerWidth > 768 ? '' : '5% 0', padding: window.innerWidth > 768 ? '1% 3%' : '2% 5%', color: 'white', width: 'fit-content', borderRadius: '10px'}}>
                             Available budget: PKR {inputs.availableBudget}

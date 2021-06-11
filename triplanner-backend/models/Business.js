@@ -15,7 +15,9 @@ const BusinessSchema = new mongoose.Schema({
     availableRooms: Number,
     roomGallery: [String],
     messaging: Boolean,
-    userRating: Number
+    userRating: Number,
+    coaEnabled: Boolean,
+    paymentAccount: Object
 });
 
 module.exports = mongoose.model('Business', BusinessSchema);

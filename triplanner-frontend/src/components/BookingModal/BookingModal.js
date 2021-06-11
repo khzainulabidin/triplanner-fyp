@@ -3,14 +3,22 @@ import MyModal from "../MyModal/MyModal";
 import styles from './BookingModal.module.css';
 import axios from "axios";
 import {BOOKINGS_ROUTE, BUSINESS_BOOKING} from "../../utils/routes";
-import {formatDate} from "../../utils/misc";
+import {formatDate, refundPayment} from "../../utils/misc";
 
 const BookingModal = ({booking, setIsLoading, fetchUser, type, hotelId}) => {
     const [open, setOpen] = useState(false);
     const [error, setError] = useState('');
 
-    const checkoutBooking = () => {
+    const checkoutBooking = async () => {
         setIsLoading(true);
+        if (type === 'tourist' && booking.paymentMethod === 'Online Payment'){
+            const isRefunded = await refundPayment(booking._id, booking.paymentDetails.id, booking.payment);
+            if (!isRefunded){
+                setIsLoading(false);
+                return setError('Unable to refund at this time. Please try again');
+            }
+        }
+
         const statusUpdate = type === 'tourist' ? 'Cancelled' : 'Expired';
         axios.put(BUSINESS_BOOKING, {id: booking._id, statusUpdate, hotelId}, {headers: {
             'x-access-token': localStorage.getItem('token')

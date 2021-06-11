@@ -27,9 +27,10 @@
 .inputs{
     display: flex;
     flex-direction: column;
+    margin-top: 2%;
 }
 
-.inputs input{
+.inputs input, .inputs select{
     height: 45px;
     background: rgba(0, 0, 0, 0.07);
     border: 0 none;
@@ -37,6 +38,10 @@
     padding: 0 5%;
     border-radius: 10px;
     margin-bottom: 3%;
+}
+
+.inputs select{
+    appearance: none;
 }
 
 .inputs div{
@@ -49,14 +54,20 @@
     width: 45%;
 }
 
-.inputs input[type=submit]{
+.submitBtn{
     background: rgba(4, 182, 169, 1);
     color: #FBFBFB;
     cursor: pointer;
     width: 30%;
+    height: 45px;
+    border: 0 none;
+    outline: 0 none;
+    padding: 0 5%;
+    border-radius: 10px;
+    margin-bottom: 3%;
 }
 
-.inputs input[type=submit]:disabled{
+.submitBtn:disabled{
     background: rgba(4, 182, 169, 0.5);
     cursor: default;
 }
@@ -69,6 +80,15 @@
 
 .icon img{
     object-fit: cover;
+}
+
+:global .cardElement{
+    background: rgba(0, 0, 0, 0.07);
+    border: 0 none;
+    outline: 0 none;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 3%;
 }
 
 @media all and (max-width: 768px) {

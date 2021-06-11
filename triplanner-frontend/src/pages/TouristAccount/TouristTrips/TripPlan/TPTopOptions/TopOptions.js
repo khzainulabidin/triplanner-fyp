@@ -10,8 +10,14 @@ const TopOptions = ({printPage, trip, user, deletePlan}) => {
         <TPCard className={styles.topOptions}>
             <Link to={'/trips'}><ArrowBackIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> <span>View all trips</span></Link>
             {trip.userId === user.userId && <div>
-                <p onClick={printPage}><SaveIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> {window.innerWidth >= 768 && <span>Save offline</span>}</p>
-                <p onClick={deletePlan}><DeleteIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/> {window.innerWidth >= 768 && <span>Delete plan</span>}</p>
+                {trip.departureTime > new Date().getTime() ? <p onClick={deletePlan}>
+                    <DeleteIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/>
+                    {window.innerWidth >= 768 && <span> Delete plan</span>}
+                </p> : <div/>}
+                <p onClick={printPage}>
+                    <SaveIcon fontSize={window.innerWidth >= 768 ? 'medium' : 'small'}/>
+                    {window.innerWidth >= 768 && <span> Save offline</span>}
+                </p>
             </div>}
         </TPCard>
     );

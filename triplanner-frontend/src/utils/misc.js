@@ -1,15 +1,17 @@
 import axios from "axios";
 import imageCompression from 'browser-image-compression';
 import {
+    CREATE_PAYMENT_INTENT,
     NEARBY_PLACES_PROXY,
     PLACE_PHOTO,
-    RATING_ROUTE,
+    RATING_ROUTE, REFUND_PAYMENT,
     UPDATE_FRIEND,
     UPLOAD_PHOTO_ROUTE
 } from "./routes";
 import {getMe} from "./auth";
 import placeholder from "../assets/placeholder.png";
 import {isValidInterest} from "./regex";
+import {CardElement} from "@stripe/react-stripe-js";
 
 export const getSrc = (photo, clickable) => {
     if (clickable && photo){
@@ -274,4 +276,47 @@ export const updateFriend = async (username, status, setIsLoading) => {
         return;
     }
     window.location.reload();
+}
+
+export const createClientSecret = async payment => {
+    const paymentIntentRes = await axios.post(
+        CREATE_PAYMENT_INTENT,
+        {paymentTotal: payment*100},
+        {headers: {'x-access-token': localStorage.getItem('token')}}
+    );
+    const paymentIntentData = paymentIntentRes.data;
+    if (!paymentIntentData.success){
+        return false;
+    }
+
+    return paymentIntentData.data;
+}
+
+export const processPayment = async (setProcessingPayment, clientSecret, stripe, elements) => {
+    setProcessingPayment(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: elements.getElement(CardElement)
+        }
+    });
+    setProcessingPayment(false);
+    if (payload.error || payload.paymentIntent.status !== 'succeeded'){
+        return false;
+    }
+
+    return payload.paymentIntent;
+}
+
+export const refundPayment = async (bookingId, paymentId, amount) => {
+    const res = await axios.post(
+        REFUND_PAYMENT,
+        {bookingId, paymentId, amount: Number(amount)*100},
+        {headers: {'x-access-token': localStorage.getItem('token')}}
+    );
+    const data = res.data;
+    if (!data.success){
+        return false;
+    }
+
+    return data.data;
 }
